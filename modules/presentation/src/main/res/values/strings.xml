@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Ui Events -->
+    <string name="ui_event_info">Info</string>
+    <string name="ui_event_error">Error</string>
+    <string name="ui_event_success">Success</string>
+    <string name="ui_event_none"> </string>
+
+    <string name="ui_error_wrong_credentials">Wrong credentials</string>
+    <string name="ui_error_server_error">Unable to reach the server. Please try again later.</string>
+    <string name="ui_error_unknown">Unknown error.</string>
+    <string name="ui_error_network">Network error. Please check your internet connection.</string>
+    <string name="ui_error_unauthorized">Unauthorized error.</string>
+    <string name="ui_error_timeout">Request has timed out. Please try again.</string>
+    <string name="ui_error_not_implemented">Not implemented!</string>
+
+    <string name="ui_success_sign_in">Successfully authenticated!</string>
+    <string name="ui_success_saved_data">Successfully saved data!</string>
+    <string name="ui_failed_to_sign_out">Sign out error. Please try again.</string>
+    <string name="ui_failed_to_sign_up">Sign up failed.</string>
+    <string name="ui_failed_to_sign_in">Sign in failed. Please try again.</string>
+
+    <!-- Snackbar resources -->
+    <string name="undo_action">Undo</string>
+    <string name="dismiss_action">Dismiss</string>
+    <string name="error_title">Error</string>
+    <string name="info_title">Info</string>
+    <string name="success_title">Success</string>
+</resources>
