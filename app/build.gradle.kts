@@ -1,4 +1,5 @@
 
+import AppDependencies.firebaseAnnotation
 import AppDependencies.hiltCoroutinesAnnotation
 
 plugins {
@@ -23,8 +24,8 @@ dependencies {
     implementation(AppDependencies.kotlin)
     implementation(AppDependencies.composeNavigation)
 
-//    implementPlatform(firebaseAnnotation)
-//    implementation(AppDependencies.firebase)
+    implementPlatform(firebaseAnnotation)
+    implementation(AppDependencies.firebase)
 
     implementation(AppDependencies.retrofit)
 

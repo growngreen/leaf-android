@@ -11,8 +11,8 @@ buildscript {
         maven("https://jitpack.io")
     }
     dependencies {
-//        classpath("com.google.gms:google-services:${AppDependencies.Version.googleServices}")
-//        classpath("com.google.firebase:firebase-crashlytics-gradle:${AppDependencies.Version.firebaseCrashlytics}")
+        classpath("com.google.gms:google-services:${AppDependencies.Version.googleServices}")
+        classpath("com.google.firebase:firebase-crashlytics-gradle:${AppDependencies.Version.firebaseCrashlytics}")
     }
 }
 
