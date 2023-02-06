@@ -35,6 +35,7 @@ class AndroidSetupPlugin : Plugin<Project> {
 
         // any common plugins
         project.plugins.apply("kotlin-android")
+        project.plugins.apply("UnitTestSetup")
 
         project.androidExtension?.let { androidExtension ->
             setupCommon(project, androidExtension)

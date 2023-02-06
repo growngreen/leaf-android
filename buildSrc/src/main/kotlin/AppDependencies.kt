@@ -141,7 +141,7 @@ object AppDependencies {
             const val androidXJUnit = "1.1.3"
             const val mockk = "1.12.0"
             const val kotest = "4.6.1"
-            const val jUnit = "5.8.0"
+            const val jUnit = "5.3.1"
         }
 
         // here define groups of dependencies and an associated extension function
