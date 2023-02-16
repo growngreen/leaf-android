@@ -22,7 +22,8 @@ import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationCommand
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
 import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.AuthDests
 import com.github.sgeorgiev24.leaf.presentation.navigation.wrapper.composableHolder
-import com.github.sgeorgiev24.leaf.theme.LeafTheme
+import com.github.sgeorgiev24.leaf.presentation.view.auth.signup.SignUpScreen
+import com.github.sgeorgiev24.leaf.ui.theme.LeafTheme
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.navigation.material.BottomSheetNavigator
@@ -84,7 +85,7 @@ fun AppRouter(
                     AnimatedNavHost(
                         modifier = Modifier.padding(padding),
                         navController = navController,
-                        startDestination = AuthDests.Loading.route // TODO change this
+                        startDestination = AuthDests.SignUp.route // TODO change this
                     ) {
                         authDestinations()
                     }
@@ -98,6 +99,9 @@ fun AppRouter(
 private fun NavGraphBuilder.authDestinations() {
     composableHolder(AuthDests.Loading) {
         Text("LOADING")
+    }
+    composableHolder(AuthDests.SignUp) {
+        SignUpScreen()
     }
 }
 

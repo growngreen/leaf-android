@@ -1,4 +1,4 @@
-package com.github.sgeorgiev24.leaf.preview
+package com.github.sgeorgiev24.leaf.ui.preview
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES

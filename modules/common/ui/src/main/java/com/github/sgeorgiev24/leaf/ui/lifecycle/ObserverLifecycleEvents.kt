@@ -1,4 +1,4 @@
-package com.github.sgeorgiev24.leaf.lifecycle
+package com.github.sgeorgiev24.leaf.ui.lifecycle
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect

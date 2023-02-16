@@ -26,4 +26,24 @@
     <string name="error_title">Error</string>
     <string name="info_title">Info</string>
     <string name="success_title">Success</string>
+
+    <!-- Validator messages -->
+    <string name="error_email_cannot_be_empty">Email cannot be empty</string>
+    <string name="error_email_invalid">Not valid email</string>
+    <string name="error_name_cannot_be_empty">Name cannot be empty</string>
+    <string name="error_name_too_short">Name is too short</string>
+    <string name="error_name_too_long">Name is too long</string>
+    <string name="error_password_too_short">Password is too short</string>
+    <string name="error_password_too_long">Password is too long</string>
+    <string name="error_passwords_do_not_match">Passwords do not match</string>
+
+    <!-- Sign up -->
+    <string name="sign_up_title">Sign Up</string>
+    <string name="sign_up_full_name">Full name</string>
+    <string name="sign_up_email">Email</string>
+    <string name="sign_up_password">Password</string>
+    <string name="sign_up_confirm_password">Confirm password</string>
+    <string name="sign_up_button">Sign up</string>
+    <string name="sign_up_got_an_account">Already got an account?</string>
+    <string name="sign_up_sign_in_link">Sign in</string>
 </resources>

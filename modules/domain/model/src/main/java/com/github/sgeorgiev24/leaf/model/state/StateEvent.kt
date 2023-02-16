@@ -4,7 +4,7 @@ interface StateEvent {
 
     fun errorInfo(): String
 
-    fun eventName(): String
+    fun eventName(): String = javaClass.simpleName
 
     fun shouldDisplayProgressBar(): Boolean
 }
