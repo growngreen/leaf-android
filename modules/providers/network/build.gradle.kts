@@ -1,4 +1,5 @@
 
+import AppDependencies.firebaseAnnotation
 import AppDependencies.hilt
 
 plugins {
@@ -13,6 +14,6 @@ dependencies {
 
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
 
-//    implementPlatform(firebaseAnnotation)
-//    implementation(AppDependencies.firebase)
+    implementPlatform(firebaseAnnotation)
+    implementation(AppDependencies.firebase)
 }
