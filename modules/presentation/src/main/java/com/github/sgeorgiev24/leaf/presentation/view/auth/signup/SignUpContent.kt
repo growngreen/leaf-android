@@ -139,6 +139,7 @@ fun SignUpContent(
 
                 LeafButton(
                     titleResId = R.string.sign_up_button,
+                    enabled = state.isSignUpButtonEnabled,
                     onClick = { action(SignUpAction.OnSignUpClick) }
                 )
                 DefaultSpacer()
