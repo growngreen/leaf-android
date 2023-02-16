@@ -1,4 +1,4 @@
-package com.github.sgeorgiev24.leaf.theme
+package com.github.sgeorgiev24.leaf.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme

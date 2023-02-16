@@ -1,8 +1,8 @@
-package com.github.sgeorgiev24.leaf.preview
+package com.github.sgeorgiev24.leaf.ui.preview
 
 import androidx.compose.runtime.Composable
 import com.github.sgeorgiev24.leaf.model.settings.Theme
-import com.github.sgeorgiev24.leaf.theme.LeafTheme
+import com.github.sgeorgiev24.leaf.ui.theme.LeafTheme
 
 @Composable
 fun PreviewComposable(

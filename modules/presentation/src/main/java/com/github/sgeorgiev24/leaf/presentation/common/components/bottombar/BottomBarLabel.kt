@@ -5,7 +5,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import com.github.sgeorgiev24.leaf.theme.LeafTheme
+import com.github.sgeorgiev24.leaf.ui.theme.LeafTheme
 
 @Composable
 fun BottomBarLabel(

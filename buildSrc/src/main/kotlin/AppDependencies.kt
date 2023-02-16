@@ -55,6 +55,7 @@ object AppDependencies {
         "androidx.compose.material3:material3",
         "androidx.compose.runtime:runtime",
         "androidx.compose.ui:ui",
+        "androidx.compose.ui:ui-util",
         "androidx.compose.ui:ui-tooling",
         "androidx.activity:activity-compose:${Version.composeActivity}",
         "androidx.constraintlayout:constraintlayout-compose:${Version.composeConstraint}"

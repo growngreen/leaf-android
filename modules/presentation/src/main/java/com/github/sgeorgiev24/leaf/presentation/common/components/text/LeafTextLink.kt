@@ -6,8 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.TextUnit
-import com.github.sgeorgiev24.leaf.theme.Colors
-import com.github.sgeorgiev24.leaf.theme.Typographs
+import com.github.sgeorgiev24.leaf.ui.theme.Colors
+import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 
 @Composable
 fun LeafTextLink(
