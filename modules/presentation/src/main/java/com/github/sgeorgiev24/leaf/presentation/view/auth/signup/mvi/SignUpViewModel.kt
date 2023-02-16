@@ -71,9 +71,13 @@ constructor(
     }
 
     private fun onConfirmPasswordValueChange(value: String) {
+        val errorResId = PasswordValidator.getConfirmPasswordErrorOrNull(
+            password = state.value.password.value,
+            confirmPassword = value
+        )
         updateState {
             copy(
-                confirmPassword = InputWrapper(value = value)
+                confirmPassword = InputWrapper(value = value, errorResId = errorResId)
             )
         }
     }
