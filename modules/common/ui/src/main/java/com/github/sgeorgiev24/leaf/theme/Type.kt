@@ -10,9 +10,9 @@ import androidx.compose.ui.unit.sp
 import com.github.sgeorgiev24.leaf.ui.R
 
 private val PlusJakartaSans = FontFamily(
-    Font(R.font.plus_jakarta_sans_regular),
-    Font(R.font.plus_jakarta_sans_bold, FontWeight.Bold),
-    Font(R.font.plus_jakarta_sans_extrabold, FontWeight.ExtraBold)
+    Font(R.font.source_sans_pro_regular),
+    Font(R.font.source_sans_pro_bold, FontWeight.Bold),
+    Font(R.font.source_sans_pro_black, FontWeight.ExtraBold)
 )
 
 private val defaultFontFeatureSettings: String = "liga off"

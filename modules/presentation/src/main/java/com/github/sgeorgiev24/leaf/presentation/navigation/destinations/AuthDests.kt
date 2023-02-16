@@ -10,4 +10,11 @@ sealed class AuthDests : NavigationAction {
         override val navAnimation: NavAnimation
             get() = NavAnimation.horizontalSlide()
     }
+
+    object SignUp : AuthDests() {
+        override val route: String
+            get() = "signUp"
+        override val navAnimation: NavAnimation
+            get() = NavAnimation.horizontalSlide()
+    }
 }
