@@ -3,12 +3,11 @@ package com.github.sgeorgiev24.leaf.presentation.view.auth.signup.mvi
 import androidx.lifecycle.SavedStateHandle
 import com.github.sgeorgiev24.leaf.interactor.auth.AuthStateEvent
 import com.github.sgeorgiev24.leaf.interactor.auth.SignUp
+import com.github.sgeorgiev24.leaf.interactor.validator.ValidatorStateEvent
+import com.github.sgeorgiev24.leaf.interactor.validator.Validators
 import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.InputWrapper
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
-import com.github.sgeorgiev24.leaf.presentation.common.util.validator.EmailValidator
-import com.github.sgeorgiev24.leaf.presentation.common.util.validator.NameValidator
-import com.github.sgeorgiev24.leaf.presentation.common.util.validator.PasswordValidator
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
 import timber.log.Timber
@@ -20,7 +19,8 @@ class SignUpViewModel
 constructor(
     savedStateHandle: SavedStateHandle,
     private val navigationDispatcher: NavigationDispatcher,
-    private val signUp: SignUp
+    private val signUp: SignUp,
+    private val validators: Validators
 ) : BaseViewModel<SignUpState, SignUpAction, ScreenEvent>(savedStateHandle, SignUpState()) {
 
     override suspend fun handleActions(action: SignUpAction) {
@@ -62,7 +62,8 @@ constructor(
     }
 
     private fun onPasswordValueChange(value: String) {
-        val errorResId = PasswordValidator.getPasswordErrorOrNull(value)
+        val errorResId =
+            validators.getPasswordErrorOrNull(ValidatorStateEvent.ValidatePassword(value))
         updateState {
             copy(
                 password = InputWrapper(value = value, errorResId = errorResId)
@@ -71,9 +72,11 @@ constructor(
     }
 
     private fun onConfirmPasswordValueChange(value: String) {
-        val errorResId = PasswordValidator.getConfirmPasswordErrorOrNull(
-            password = state.value.password.value,
-            confirmPassword = value
+        val errorResId = validators.getConfirmPasswordErrorOrNull(
+            ValidatorStateEvent.ValidateConfirmPassword(
+                password = state.value.password.value,
+                confirmPassword = value
+            )
         )
         updateState {
             copy(
@@ -83,7 +86,7 @@ constructor(
     }
 
     private fun onEmailValueChange(value: String) {
-        val errorResId = EmailValidator.getEmailErrorOrNull(value)
+        val errorResId = validators.getEmailErrorOrNull(ValidatorStateEvent.ValidateEmail(value))
         updateState {
             copy(
                 email = InputWrapper(value = value, errorResId = errorResId)
@@ -92,7 +95,7 @@ constructor(
     }
 
     private fun onNameValueChange(value: String) {
-        val errorResId = NameValidator.getNameErrorOrNull(value)
+        val errorResId = validators.getNameErrorOrNull(ValidatorStateEvent.ValidateUserName(value))
         updateState {
             copy(
                 name = InputWrapper(value = value, errorResId = errorResId)
