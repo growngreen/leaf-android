@@ -35,7 +35,7 @@ import com.google.accompanist.flowlayout.FlowRow
 @Composable
 fun SignUpContent(
     state: SignUpState,
-    action: (SignUpAction) -> Unit,
+    action: (SignUpAction) -> Unit
 ) {
     val scrollState = rememberScrollState()
 

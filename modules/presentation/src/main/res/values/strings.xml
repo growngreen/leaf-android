@@ -46,4 +46,7 @@
     <string name="sign_up_button">Sign up</string>
     <string name="sign_up_got_an_account">Already got an account?</string>
     <string name="sign_up_sign_in_link">Sign in</string>
+
+    <!-- Sign in -->
+    <string name="sign_in_title">Sign in</string>
 </resources>
