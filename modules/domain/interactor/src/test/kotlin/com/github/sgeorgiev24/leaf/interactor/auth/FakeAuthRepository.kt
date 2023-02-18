@@ -25,4 +25,21 @@ class FakeAuthRepository : AuthRepository {
             DataState(data = Unit)
         }
     }
+
+    override suspend fun signIn(
+        stateEvent: StateEvent,
+        email: String,
+        password: String
+    ): DataState<Unit> {
+        val emailError =
+            email.isEmpty()
+        val passwordError =
+            password.length < 6 || password.length > 50
+
+        return if (emailError || passwordError) {
+            DataState(data = null)
+        } else {
+            DataState(data = Unit)
+        }
+    }
 }

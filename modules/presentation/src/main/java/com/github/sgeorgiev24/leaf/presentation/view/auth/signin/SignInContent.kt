@@ -1,14 +1,11 @@
-package com.github.sgeorgiev24.leaf.presentation.view.auth.signup
+package com.github.sgeorgiev24.leaf.presentation.view.auth.signin
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,9 +20,9 @@ import com.github.sgeorgiev24.leaf.presentation.common.components.button.LeafBut
 import com.github.sgeorgiev24.leaf.presentation.common.components.text.LeafTextLink
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.LeafOutlinedTextField
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.DefaultSpacer
+import com.github.sgeorgiev24.leaf.presentation.view.auth.signin.mvi.SignInAction
+import com.github.sgeorgiev24.leaf.presentation.view.auth.signin.mvi.SignInState
 import com.github.sgeorgiev24.leaf.ui.text.LeafScreenTitle
-import com.github.sgeorgiev24.leaf.presentation.view.auth.signup.mvi.SignUpAction
-import com.github.sgeorgiev24.leaf.presentation.view.auth.signup.mvi.SignUpState
 import com.github.sgeorgiev24.leaf.ui.theme.Dimens
 import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 import com.github.sgeorgiev24.leaf.ui.topbar.LeafCollapsingToolbar
@@ -33,16 +30,14 @@ import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
-fun SignUpContent(
-    state: SignUpState,
-    action: (SignUpAction) -> Unit
+fun SignInContent(
+    state: SignInState,
+    action: (SignInAction) -> Unit
 ) {
-    val scrollState = rememberScrollState()
-
     LeafCollapsingToolbar(
         title = stringResource(R.string.sign_up_title),
-        scrollProvider = { scrollState.value },
-        onBack = { action(SignUpAction.OnBack) },
+        scrollProvider = { 0 },
+        onBack = { action(SignInAction.OnBack) }
     ) {
         Column(
             modifier = Modifier.fillMaxHeight()
@@ -50,7 +45,6 @@ fun SignUpContent(
             Column(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .verticalScroll(scrollState)
                     .weight(1f)
                     .padding(
                         start = Dimens.padding_horizontal,
@@ -58,34 +52,15 @@ fun SignUpContent(
                         top = Dimens.padding_vertical
                     )
             ) {
-                LeafScreenTitle(textResId = R.string.sign_up_title)
+                LeafScreenTitle(textResId = R.string.sign_in_title)
                 DefaultSpacer(height = Dimens.padding_vertical)
 
                 LeafOutlinedTextField(
-                    inputWrapper = state.name,
-                    label = stringResource(R.string.sign_up_full_name),
-                    keyboardActions = KeyboardActions(
-                        onDone = {
-                            action(SignUpAction.OnNextActionClick)
-                        }
-                    ),
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Text,
-                        imeAction = ImeAction.Next,
-                    ),
-                    visualTransformation = VisualTransformation.None,
-                    onTextChanged = { text, _ ->
-                        action(SignUpAction.OnNameValueChange(text))
-                    },
-                )
-                DefaultSpacer()
-
-                LeafOutlinedTextField(
                     inputWrapper = state.email,
-                    label = stringResource(R.string.sign_up_email),
+                    label = stringResource(R.string.sign_in_email),
                     keyboardActions = KeyboardActions(
                         onDone = {
-                            action(SignUpAction.OnNextActionClick)
+                            action(SignInAction.OnNextActionClick)
                         }
                     ),
                     keyboardOptions = KeyboardOptions(
@@ -94,36 +69,17 @@ fun SignUpContent(
                     ),
                     visualTransformation = VisualTransformation.None,
                     onTextChanged = { text, _ ->
-                        action(SignUpAction.OnEmailValueChange(text))
+                        action(SignInAction.OnEmailValueChange(text))
                     },
                 )
                 DefaultSpacer()
 
                 LeafOutlinedTextField(
                     inputWrapper = state.password,
-                    label = stringResource(R.string.sign_up_password),
+                    label = stringResource(R.string.sign_in_password),
                     keyboardActions = KeyboardActions(
                         onDone = {
-                            action(SignUpAction.OnNextActionClick)
-                        }
-                    ),
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Password,
-                        imeAction = ImeAction.Next,
-                    ),
-                    visualTransformation = PasswordVisualTransformation(),
-                    onTextChanged = { text, _ ->
-                        action(SignUpAction.OnPasswordValueChange(text))
-                    },
-                )
-                DefaultSpacer()
-
-                LeafOutlinedTextField(
-                    inputWrapper = state.confirmPassword,
-                    label = stringResource(R.string.sign_up_confirm_password),
-                    keyboardActions = KeyboardActions(
-                        onDone = {
-                            action(SignUpAction.OnDoneActionClick)
+                            action(SignInAction.OnDoneActionClick)
                         }
                     ),
                     keyboardOptions = KeyboardOptions(
@@ -132,15 +88,15 @@ fun SignUpContent(
                     ),
                     visualTransformation = PasswordVisualTransformation(),
                     onTextChanged = { text, _ ->
-                        action(SignUpAction.OnConfirmPasswordValueChange(text))
+                        action(SignInAction.OnPasswordValueChange(text))
                     },
                 )
-                DefaultSpacer(height = Dimens.padding_extra_large)
+                DefaultSpacer()
 
                 LeafButton(
-                    titleResId = R.string.sign_up_button,
-                    enabled = state.isSignUpButtonEnabled,
-                    onClick = { action(SignUpAction.OnSignUpClick) }
+                    titleResId = R.string.sign_in_button,
+                    enabled = state.isSignInButtonEnabled,
+                    onClick = { action(SignInAction.OnSignInClick) }
                 )
                 DefaultSpacer()
 
@@ -151,13 +107,13 @@ fun SignUpContent(
                 ) {
                     Text(
                         modifier = Modifier.padding(end = 2.dp),
-                        text = stringResource(R.string.sign_up_got_an_account),
+                        text = stringResource(R.string.sign_in_dont_have_an_account),
                         style = Typographs.body1
                     )
                     LeafTextLink(
                         Modifier.weight(1f),
-                        title = stringResource(R.string.sign_up_sign_in_link),
-                        onClick = { action(SignUpAction.OnSignInLinkClick) },
+                        title = stringResource(R.string.sign_in_sign_up_link),
+                        onClick = { action(SignInAction.OnSignUpLinkClick) },
                         style = Typographs.body1Bold
                     )
                 }

@@ -10,4 +10,10 @@ interface AuthRepository {
         name: String,
         password: String
     ): DataState<Unit>
+
+    suspend fun signIn(
+        stateEvent: StateEvent,
+        email: String,
+        password: String
+    ): DataState<Unit>
 }

@@ -21,7 +21,9 @@ import com.github.sgeorgiev24.leaf.presentation.common.components.bottombar.Leaf
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationCommand
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
 import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.AuthDests
+import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.MainDests
 import com.github.sgeorgiev24.leaf.presentation.navigation.wrapper.composableHolder
+import com.github.sgeorgiev24.leaf.presentation.view.auth.signin.SignInScreen
 import com.github.sgeorgiev24.leaf.presentation.view.auth.signup.SignUpScreen
 import com.github.sgeorgiev24.leaf.ui.theme.LeafTheme
 import com.google.accompanist.navigation.animation.AnimatedNavHost
@@ -85,9 +87,10 @@ fun AppRouter(
                     AnimatedNavHost(
                         modifier = Modifier.padding(padding),
                         navController = navController,
-                        startDestination = AuthDests.SignUp.route // TODO change this
+                        startDestination = AuthDests.SignIn.route // TODO change this
                     ) {
                         authDestinations()
+                        mainDestinations()
                     }
                 },
                 drawerShape = RectangleShape,
@@ -97,11 +100,17 @@ fun AppRouter(
 }
 
 private fun NavGraphBuilder.authDestinations() {
-    composableHolder(AuthDests.Loading) {
-        Text("LOADING")
-    }
     composableHolder(AuthDests.SignUp) {
         SignUpScreen()
+    }
+    composableHolder(AuthDests.SignIn) {
+        SignInScreen()
+    }
+}
+
+private fun NavGraphBuilder.mainDestinations() {
+    composableHolder(MainDests.Home) {
+        Text("HOME")
     }
 }
 
