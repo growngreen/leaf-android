@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Validator messages -->
+    <string name="error_email_cannot_be_empty">Email cannot be empty</string>
+    <string name="error_email_invalid">Not valid email</string>
+</resources>

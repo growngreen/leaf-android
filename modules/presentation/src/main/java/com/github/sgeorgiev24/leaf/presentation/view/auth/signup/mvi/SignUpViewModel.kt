@@ -3,10 +3,11 @@ package com.github.sgeorgiev24.leaf.presentation.view.auth.signup.mvi
 import androidx.lifecycle.SavedStateHandle
 import com.github.sgeorgiev24.leaf.interactor.auth.AuthStateEvent
 import com.github.sgeorgiev24.leaf.interactor.auth.SignUp
+import com.github.sgeorgiev24.leaf.interactor.validator.ValidatorStateEvent
+import com.github.sgeorgiev24.leaf.interactor.validator.Validators
 import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.InputWrapper
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
-import com.github.sgeorgiev24.leaf.presentation.common.util.validator.EmailValidator
 import com.github.sgeorgiev24.leaf.presentation.common.util.validator.NameValidator
 import com.github.sgeorgiev24.leaf.presentation.common.util.validator.PasswordValidator
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
@@ -20,7 +21,8 @@ class SignUpViewModel
 constructor(
     savedStateHandle: SavedStateHandle,
     private val navigationDispatcher: NavigationDispatcher,
-    private val signUp: SignUp
+    private val signUp: SignUp,
+    private val validators: Validators
 ) : BaseViewModel<SignUpState, SignUpAction, ScreenEvent>(savedStateHandle, SignUpState()) {
 
     override suspend fun handleActions(action: SignUpAction) {
@@ -83,7 +85,7 @@ constructor(
     }
 
     private fun onEmailValueChange(value: String) {
-        val errorResId = EmailValidator.getEmailErrorOrNull(value)
+        val errorResId = validators.getEmailErrorOrNull(ValidatorStateEvent.ValidateEmail(value))
         updateState {
             copy(
                 email = InputWrapper(value = value, errorResId = errorResId)
