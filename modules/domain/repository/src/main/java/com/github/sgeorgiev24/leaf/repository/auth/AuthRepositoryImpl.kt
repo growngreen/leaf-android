@@ -25,4 +25,15 @@ constructor(
             password = password
         )
         .toDataState(stateEvent)
+
+    override suspend fun signIn(
+        stateEvent: StateEvent,
+        email: String,
+        password: String
+    ) = authDataSource
+        .signIn(
+            email = email,
+            password = password
+        )
+        .toDataState(stateEvent)
 }
