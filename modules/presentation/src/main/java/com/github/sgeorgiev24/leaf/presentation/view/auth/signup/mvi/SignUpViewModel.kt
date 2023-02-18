@@ -8,7 +8,6 @@ import com.github.sgeorgiev24.leaf.interactor.validator.Validators
 import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.InputWrapper
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
-import com.github.sgeorgiev24.leaf.presentation.common.util.validator.NameValidator
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
 import timber.log.Timber
@@ -96,7 +95,7 @@ constructor(
     }
 
     private fun onNameValueChange(value: String) {
-        val errorResId = NameValidator.getNameErrorOrNull(value)
+        val errorResId = validators.getNameErrorOrNull(ValidatorStateEvent.ValidateUserName(value))
         updateState {
             copy(
                 name = InputWrapper(value = value, errorResId = errorResId)

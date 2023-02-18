@@ -6,4 +6,7 @@
     <string name="error_password_too_short">Password is too short</string>
     <string name="error_password_too_long">Password is too long</string>
     <string name="error_passwords_do_not_match">Passwords do not match</string>
+    <string name="error_name_cannot_be_empty">Name cannot be empty</string>
+    <string name="error_name_too_short">Name is too short</string>
+    <string name="error_name_too_long">Name is too long</string>
 </resources>

@@ -7,5 +7,6 @@ class Validators
 constructor(
     val getEmailErrorOrNull: ValidateEmail,
     val getPasswordErrorOrNull: ValidatePassword,
-    val getConfirmPasswordErrorOrNull: ValidateConfirmPassword
+    val getConfirmPasswordErrorOrNull: ValidateConfirmPassword,
+    val getNameErrorOrNull: ValidateUserName
 )
