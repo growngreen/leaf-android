@@ -4,6 +4,12 @@ import com.github.sgeorgiev24.leaf.presentation.navigation.NavAnimation
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationAction
 
 sealed class AuthDests : NavigationAction {
+    object Splash : AuthDests() {
+        override val route: String
+            get() = "splash"
+        override val navAnimation: NavAnimation
+            get() = NavAnimation.horizontalSlide()
+    }
     object SignUp : AuthDests() {
         override val route: String
             get() = "signUp"
