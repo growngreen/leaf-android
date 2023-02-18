@@ -38,8 +38,13 @@ constructor(
         )
         .toDataState(stateEvent)
 
-    override suspend fun getUser(stateEvent: StateEvent) =
+    override fun getUser(stateEvent: StateEvent) =
         authDataSource
             .getUser()
             .toDataState(stateEvent) { it?.toDomain() }
+
+    override fun signOut(stateEvent: StateEvent) =
+        authDataSource
+            .signOut()
+            .toDataState(stateEvent)
 }

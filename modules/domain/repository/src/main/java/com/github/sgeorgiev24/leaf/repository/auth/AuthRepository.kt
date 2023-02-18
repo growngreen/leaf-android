@@ -18,5 +18,7 @@ interface AuthRepository {
         password: String
     ): DataState<Unit>
 
-    suspend fun getUser(stateEvent: StateEvent): DataState<LeafUser?>
+    fun getUser(stateEvent: StateEvent): DataState<LeafUser?>
+
+    fun signOut(stateEvent: StateEvent): DataState<Unit>
 }
