@@ -24,4 +24,9 @@ sealed class AuthStateEvent : StateEvent {
         override fun errorInfo() = "Error while trying to get leaf user"
         override fun shouldDisplayProgressBar() = true
     }
+
+    object SignOut : AuthStateEvent() {
+        override fun errorInfo() = "Error while trying to sign out the user"
+        override fun shouldDisplayProgressBar() = false
+    }
 }

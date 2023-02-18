@@ -15,5 +15,7 @@ interface AuthDataSource {
         password: String
     ): NetworkResult<Unit>
 
-    suspend fun getUser(): NetworkResult<LeafUserDto?>
+    fun getUser(): NetworkResult<LeafUserDto?>
+
+    fun signOut(): NetworkResult<Unit>
 }

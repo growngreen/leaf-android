@@ -47,14 +47,17 @@ class AuthDataSourceImpl
                 }
         }
 
-    override suspend fun getUser() =
-        suspendCoroutine { continuation ->
-            firebaseAuth.currentUser?.let {
-                continuation.resumeWith(Result.success(NetworkResult.Success(it.toUserDto())))
-            } ?: run {
-                continuation.resumeWith(Result.success(NetworkResult.Success(null)))
-            }
+    override fun getUser() =
+        firebaseAuth.currentUser?.let {
+            NetworkResult.Success(it.toUserDto())
+        } ?: run {
+            NetworkResult.Success(null)
         }
+
+    override fun signOut(): NetworkResult<Unit> {
+        firebaseAuth.signOut()
+        return NetworkResult.Success(Unit)
+    }
 
     private fun updateProfile(
         task: Task<AuthResult>,
