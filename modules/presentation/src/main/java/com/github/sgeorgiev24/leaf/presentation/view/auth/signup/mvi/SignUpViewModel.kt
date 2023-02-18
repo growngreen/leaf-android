@@ -9,6 +9,7 @@ import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.InputWrapper
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
+import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.AuthDests
 import dagger.hilt.android.lifecycle.HiltViewModel
 import timber.log.Timber
 import javax.inject.Inject
@@ -33,7 +34,8 @@ constructor(
                 submitEvent(ScreenEvent.MoveFocus())
             SignUpAction.OnSignUpClick ->
                 signUp()
-            SignUpAction.OnSignInLinkClick -> {}
+            SignUpAction.OnSignInLinkClick ->
+                navigationDispatcher.navigateTo(AuthDests.SignIn)
             is SignUpAction.OnConfirmPasswordValueChange ->
                 onConfirmPasswordValueChange(action.value)
             is SignUpAction.OnEmailValueChange ->
