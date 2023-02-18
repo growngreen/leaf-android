@@ -3,4 +3,6 @@
     <!-- Validator messages -->
     <string name="error_email_cannot_be_empty">Email cannot be empty</string>
     <string name="error_email_invalid">Not valid email</string>
+    <string name="error_password_too_short">Password is too short</string>
+    <string name="error_password_too_long">Password is too long</string>
 </resources>

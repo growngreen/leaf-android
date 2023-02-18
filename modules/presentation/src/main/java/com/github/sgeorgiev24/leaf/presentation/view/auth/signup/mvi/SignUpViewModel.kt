@@ -64,7 +64,8 @@ constructor(
     }
 
     private fun onPasswordValueChange(value: String) {
-        val errorResId = PasswordValidator.getPasswordErrorOrNull(value)
+        val errorResId =
+            validators.getPasswordErrorOrNull(ValidatorStateEvent.ValidatePassword(value))
         updateState {
             copy(
                 password = InputWrapper(value = value, errorResId = errorResId)
