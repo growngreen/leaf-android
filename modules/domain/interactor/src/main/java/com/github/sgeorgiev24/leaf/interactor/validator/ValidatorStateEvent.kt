@@ -16,4 +16,12 @@ sealed class ValidatorStateEvent : StateEvent {
         override fun errorInfo() = "Error while trying to validate password"
         override fun shouldDisplayProgressBar() = false
     }
+
+    data class ValidateConfirmPassword(
+        val password: String,
+        val confirmPassword: String
+    ) : ValidatorStateEvent() {
+        override fun errorInfo() = "Error while trying to validate confirm password"
+        override fun shouldDisplayProgressBar() = false
+    }
 }

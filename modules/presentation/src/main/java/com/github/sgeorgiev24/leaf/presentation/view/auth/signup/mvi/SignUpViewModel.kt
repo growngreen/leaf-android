@@ -9,7 +9,6 @@ import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.InputWrapper
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
 import com.github.sgeorgiev24.leaf.presentation.common.util.validator.NameValidator
-import com.github.sgeorgiev24.leaf.presentation.common.util.validator.PasswordValidator
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
 import timber.log.Timber
@@ -74,9 +73,11 @@ constructor(
     }
 
     private fun onConfirmPasswordValueChange(value: String) {
-        val errorResId = PasswordValidator.getConfirmPasswordErrorOrNull(
-            password = state.value.password.value,
-            confirmPassword = value
+        val errorResId = validators.getConfirmPasswordErrorOrNull(
+            ValidatorStateEvent.ValidateConfirmPassword(
+                password = state.value.password.value,
+                confirmPassword = value
+            )
         )
         updateState {
             copy(

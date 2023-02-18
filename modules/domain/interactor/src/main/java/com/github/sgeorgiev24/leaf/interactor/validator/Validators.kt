@@ -6,5 +6,6 @@ class Validators
 @Inject
 constructor(
     val getEmailErrorOrNull: ValidateEmail,
-    val getPasswordErrorOrNull: ValidatePassword
+    val getPasswordErrorOrNull: ValidatePassword,
+    val getConfirmPasswordErrorOrNull: ValidateConfirmPassword
 )
