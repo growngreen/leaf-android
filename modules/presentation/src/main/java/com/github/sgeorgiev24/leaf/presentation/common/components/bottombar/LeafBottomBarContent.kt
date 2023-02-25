@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import com.github.sgeorgiev24.leaf.presentation.common.components.bottombar.mvi.BottomNavigationAction
 import com.github.sgeorgiev24.leaf.presentation.common.components.bottombar.mvi.BottomNavigationState
-import com.github.sgeorgiev24.leaf.ui.theme.LeafTheme
+import com.onthemarket.mobile.ui.theme.LeafTheme
 
 @Composable
 fun LeafBottomBarContent(

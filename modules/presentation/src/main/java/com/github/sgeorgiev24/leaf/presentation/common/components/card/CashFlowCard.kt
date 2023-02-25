@@ -15,9 +15,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
 import com.github.sgeorgiev24.leaf.presentation.R
 import com.github.sgeorgiev24.leaf.ui.preview.DevicePreview
-import com.github.sgeorgiev24.leaf.ui.theme.Dimens
-import com.github.sgeorgiev24.leaf.ui.theme.Gray70
-import com.github.sgeorgiev24.leaf.ui.theme.Typographs
+import com.github.sgeorgiev24.leaf.ui.theme.GreySuit
+import com.onthemarket.mobile.ui.theme.Dimens
+import com.onthemarket.mobile.ui.theme.Typographs
 
 @Composable
 fun CashFlowCard(
@@ -47,7 +47,7 @@ fun CashFlowCard(
             Text(
                 text = title,
                 style = Typographs.h3,
-                color = Gray70
+                color = GreySuit
             )
         }
     }

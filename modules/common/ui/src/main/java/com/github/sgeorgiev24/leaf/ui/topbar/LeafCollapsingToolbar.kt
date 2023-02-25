@@ -1,6 +1,7 @@
 package com.github.sgeorgiev24.leaf.ui.topbar
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.IconButton
@@ -17,9 +18,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.github.sgeorgiev24.leaf.ui.theme.Dimens
 import com.github.sgeorgiev24.leaf.ui.R
-import com.github.sgeorgiev24.leaf.ui.theme.Typographs
+import com.github.sgeorgiev24.leaf.ui.theme.GhostWhite
+import com.onthemarket.mobile.ui.theme.Dimens
+import com.onthemarket.mobile.ui.theme.Typographs
 
 @Composable
 fun LeafCollapsingToolbar(
@@ -45,7 +47,7 @@ fun LeafCollapsingToolbar(
     }
 
     Box(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().background(GhostWhite),
     ) {
         content()
 

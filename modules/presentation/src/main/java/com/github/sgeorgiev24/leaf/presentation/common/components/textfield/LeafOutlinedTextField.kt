@@ -13,6 +13,8 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
+import androidx.compose.material.TextFieldColors
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,8 +28,9 @@ import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.github.sgeorgiev24.leaf.ui.theme.Dimens
-import com.github.sgeorgiev24.leaf.ui.theme.Typographs
+import com.onthemarket.mobile.ui.theme.Colors
+import com.onthemarket.mobile.ui.theme.Dimens
+import com.onthemarket.mobile.ui.theme.Typographs
 
 @Composable
 fun LeafOutlinedTextField(
@@ -88,6 +91,11 @@ fun LeafOutlinedTextField(
             fieldValue.value = it
             onTextChanged?.invoke(it.text, lostFocusOnce.value)
         },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            backgroundColor = Colors.textFieldBackgroundColor,
+            focusedBorderColor = Colors.textFieldFocusedBackgroundColor,
+            unfocusedBorderColor = Colors.textFieldUnfocusedBorderColor
+        )
     )
 }
 
@@ -110,6 +118,7 @@ fun LeafBaseOutlinedTextField(
     trailingIcon: @Composable (() -> Unit)? = null,
     trailingIconError: @Composable (() -> Unit)? = null,
     onTextChanged: ((textField: TextFieldValue) -> Unit)? = null,
+    colors: TextFieldColors = TextFieldDefaults.outlinedTextFieldColors()
 ) {
 
     val leadIcon: @Composable (() -> Unit)? = if (leadingIcon != null) {
@@ -139,7 +148,8 @@ fun LeafBaseOutlinedTextField(
             trailingIcon = {
                 if (isError) trailingIconError?.invoke() else trailingIcon?.invoke()
             },
-            readOnly = readOnly
+            readOnly = readOnly,
+            colors = colors
         )
 
         if (isError) {

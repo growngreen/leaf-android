@@ -15,6 +15,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.github.sgeorgiev24.leaf.presentation.R
+import com.github.sgeorgiev24.leaf.ui.theme.HadfieldBlue
+import com.onthemarket.mobile.ui.theme.Colors
 
 @Composable
 fun ShowMoreIcon(
@@ -25,9 +27,9 @@ fun ShowMoreIcon(
         modifier = modifier
             .background(
                 shape = CircleShape,
-                color = Color.White
+                color = Colors.background
             )
-            .border(1.dp, color = Color.Blue, shape = CircleShape)
+            .border(1.dp, color = HadfieldBlue, shape = CircleShape)
             .size(25.dp),
         contentAlignment = Alignment.Center
     ) {

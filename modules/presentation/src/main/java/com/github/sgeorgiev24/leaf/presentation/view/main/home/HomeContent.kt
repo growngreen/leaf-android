@@ -15,8 +15,8 @@ import com.github.sgeorgiev24.leaf.presentation.common.components.icon.ShowMoreI
 import com.github.sgeorgiev24.leaf.presentation.view.main.home.mvi.HomeAction
 import com.github.sgeorgiev24.leaf.presentation.view.main.home.mvi.HomeState
 import com.github.sgeorgiev24.leaf.ui.text.LeafScreenTitle
-import com.github.sgeorgiev24.leaf.ui.theme.Dimens
 import com.github.sgeorgiev24.leaf.ui.topbar.LeafCollapsingToolbar
+import com.onthemarket.mobile.ui.theme.Dimens
 
 @Composable
 fun HomeContent(

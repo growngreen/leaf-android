@@ -8,15 +8,16 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
-import com.github.sgeorgiev24.leaf.ui.theme.Colors
-import com.github.sgeorgiev24.leaf.ui.theme.Dimens
-import com.github.sgeorgiev24.leaf.ui.theme.Typographs
+import com.onthemarket.mobile.ui.theme.Colors
+import com.onthemarket.mobile.ui.theme.Dimens
+import com.onthemarket.mobile.ui.theme.Typographs
 
 @Composable
 fun LeafButton(
@@ -34,6 +35,10 @@ fun LeafButton(
         enabled = enabled,
         shape = RoundedCornerShape(
             size = Dimens.rounded_corner_shape
+        ),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Colors.buttonContainerColor,
+            disabledContainerColor = Colors.disabledButtonContainerColor
         )
     ) {
         Text(
@@ -44,7 +49,7 @@ fun LeafButton(
             textAlign = TextAlign.Center,
             style = textStyle,
             text = stringResource(id = titleResId),
-            color = Colors.onSecondary
+            color = Colors.buttonTextColor
         )
     }
 }

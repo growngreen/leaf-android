@@ -23,11 +23,11 @@ import com.github.sgeorgiev24.leaf.presentation.common.components.util.DefaultSp
 import com.github.sgeorgiev24.leaf.presentation.view.auth.signin.mvi.SignInAction
 import com.github.sgeorgiev24.leaf.presentation.view.auth.signin.mvi.SignInState
 import com.github.sgeorgiev24.leaf.ui.text.LeafScreenTitle
-import com.github.sgeorgiev24.leaf.ui.theme.Dimens
-import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 import com.github.sgeorgiev24.leaf.ui.topbar.LeafCollapsingToolbar
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
+import com.onthemarket.mobile.ui.theme.Dimens
+import com.onthemarket.mobile.ui.theme.Typographs
 
 @Composable
 fun SignInContent(
