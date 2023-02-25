@@ -59,4 +59,7 @@
     <string name="home_title">Hey</string>
     <string name="home_title_user_name">Hey, %s</string>
     <string name="home_dropdown_sign_out">Sign out</string>
+    <string name="home_cashflow_income">Income</string>
+    <string name="home_cashflow_expenses">Expenses</string>
+    <string name="home_cashflow_balance">Balance</string>
 </resources>

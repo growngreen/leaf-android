@@ -2,6 +2,7 @@ package com.github.sgeorgiev24.leaf.ui.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
 
 @Immutable
@@ -45,4 +46,8 @@ internal object LeafLightColors : LeafColors {
     override val textFieldBackgroundColor: Color = White
     override val textFieldFocusedBackgroundColor: Color = HadfieldBlue
     override val textFieldUnfocusedBorderColor: Color = Color.Transparent
+
+    override val cashFlowCardBackgroundColor: Color = White
+    override val cashFlowCardValueColor: Color = Black
+    override val cashFlowCardTitleColor: Color = GreySuit
 }

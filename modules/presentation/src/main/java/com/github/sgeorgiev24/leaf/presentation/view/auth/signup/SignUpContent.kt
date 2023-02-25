@@ -3,7 +3,6 @@ package com.github.sgeorgiev24.leaf.presentation.view.auth.signup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
@@ -22,7 +21,7 @@ import com.github.sgeorgiev24.leaf.presentation.R
 import com.github.sgeorgiev24.leaf.presentation.common.components.button.LeafButton
 import com.github.sgeorgiev24.leaf.presentation.common.components.text.LeafTextLink
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.LeafOutlinedTextField
-import com.github.sgeorgiev24.leaf.presentation.common.components.util.DefaultSpacer
+import com.github.sgeorgiev24.leaf.presentation.common.components.util.HeightSpacer
 import com.github.sgeorgiev24.leaf.ui.text.LeafScreenTitle
 import com.github.sgeorgiev24.leaf.presentation.view.auth.signup.mvi.SignUpAction
 import com.github.sgeorgiev24.leaf.presentation.view.auth.signup.mvi.SignUpState
@@ -59,7 +58,7 @@ fun SignUpContent(
                     )
             ) {
                 LeafScreenTitle(textResId = R.string.sign_up_title)
-                DefaultSpacer(height = Dimens.padding_vertical)
+                HeightSpacer(height = Dimens.padding_vertical)
 
                 LeafOutlinedTextField(
                     inputWrapper = state.name,
@@ -78,7 +77,7 @@ fun SignUpContent(
                         action(SignUpAction.OnNameValueChange(text))
                     },
                 )
-                DefaultSpacer()
+                HeightSpacer()
 
                 LeafOutlinedTextField(
                     inputWrapper = state.email,
@@ -97,7 +96,7 @@ fun SignUpContent(
                         action(SignUpAction.OnEmailValueChange(text))
                     },
                 )
-                DefaultSpacer()
+                HeightSpacer()
 
                 LeafOutlinedTextField(
                     inputWrapper = state.password,
@@ -116,7 +115,7 @@ fun SignUpContent(
                         action(SignUpAction.OnPasswordValueChange(text))
                     },
                 )
-                DefaultSpacer()
+                HeightSpacer()
 
                 LeafOutlinedTextField(
                     inputWrapper = state.confirmPassword,
@@ -135,14 +134,14 @@ fun SignUpContent(
                         action(SignUpAction.OnConfirmPasswordValueChange(text))
                     },
                 )
-                DefaultSpacer(height = Dimens.padding_extra_large)
+                HeightSpacer(height = Dimens.padding_extra_large)
 
                 LeafButton(
                     titleResId = R.string.sign_up_button,
                     enabled = state.isSignUpButtonEnabled,
                     onClick = { action(SignUpAction.OnSignUpClick) }
                 )
-                DefaultSpacer()
+                HeightSpacer()
 
                 FlowRow(
                     modifier = Modifier

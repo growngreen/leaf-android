@@ -9,12 +9,19 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import com.github.sgeorgiev24.leaf.model.auth.LeafUser
 import com.github.sgeorgiev24.leaf.presentation.R
 import com.github.sgeorgiev24.leaf.presentation.common.components.LeafDropdownMenu
+import com.github.sgeorgiev24.leaf.presentation.common.components.card.CashFlowCard
 import com.github.sgeorgiev24.leaf.presentation.common.components.icon.ShowMoreIcon
+import com.github.sgeorgiev24.leaf.presentation.common.components.util.HeightSpacer
+import com.github.sgeorgiev24.leaf.presentation.common.components.util.WidthSpacer
 import com.github.sgeorgiev24.leaf.presentation.view.main.home.mvi.HomeAction
 import com.github.sgeorgiev24.leaf.presentation.view.main.home.mvi.HomeState
+import com.github.sgeorgiev24.leaf.ui.preview.DevicePreview
 import com.github.sgeorgiev24.leaf.ui.text.LeafScreenTitle
+import com.github.sgeorgiev24.leaf.ui.theme.Cinnabar
+import com.github.sgeorgiev24.leaf.ui.theme.Pantone
 import com.github.sgeorgiev24.leaf.ui.topbar.LeafCollapsingToolbar
 import com.onthemarket.mobile.ui.theme.Dimens
 
@@ -51,9 +58,47 @@ fun HomeContent(
                 )
 
                 LeafScreenTitle(text = screenTitle)
+
+                CashFlowCards(
+                    income = "1914",
+                    expenses = "19.14",
+                    balance = "1894.86"
+                )
             }
         }
     }
+}
+
+@Composable
+private fun CashFlowCards(
+    income: String,
+    expenses: String,
+    balance: String
+) {
+    HeightSpacer(height = Dimens.padding_large)
+    Row {
+        CashFlowCard(
+            modifier = Modifier.weight(.5f),
+            title = stringResource(R.string.home_cashflow_income),
+            iconResId = R.drawable.ic_income,
+            value = income,
+            valueTextColor = Pantone
+        )
+        WidthSpacer(width = Dimens.padding_large)
+        CashFlowCard(
+            modifier = Modifier.weight(.5f),
+            title = stringResource(R.string.home_cashflow_expenses),
+            iconResId = R.drawable.ic_expenses,
+            value = expenses,
+            valueTextColor = Cinnabar
+        )
+    }
+    HeightSpacer(height = Dimens.padding_large)
+    CashFlowCard(
+        title = stringResource(R.string.home_cashflow_balance),
+        iconResId = R.drawable.ic_balance,
+        value = balance
+    )
 }
 
 @Composable
@@ -77,4 +122,13 @@ private fun ShowMore(
             options = options
         )
     }
+}
+
+@DevicePreview
+@Composable
+fun HomePreview() {
+    HomeContent(
+        state = HomeState(LeafUser(null, "Siso")),
+        action = {}
+    )
 }

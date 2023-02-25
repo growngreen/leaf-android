@@ -44,4 +44,8 @@ internal object LeafDarkColors : LeafColors {
     override val textFieldBackgroundColor: Color = Color.White
     override val textFieldFocusedBackgroundColor: Color = HadfieldBlue
     override val textFieldUnfocusedBorderColor: Color = Color.Transparent
+
+    override val cashFlowCardBackgroundColor: Color = Color.White
+    override val cashFlowCardValueColor: Color = Color.Black
+    override val cashFlowCardTitleColor: Color = GreySuit
 }

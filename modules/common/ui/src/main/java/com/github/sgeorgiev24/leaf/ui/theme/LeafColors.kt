@@ -42,4 +42,8 @@ interface LeafColors {
     val textFieldBackgroundColor: Color
     val textFieldFocusedBackgroundColor: Color
     val textFieldUnfocusedBorderColor: Color
+
+    val cashFlowCardBackgroundColor: Color
+    val cashFlowCardValueColor: Color
+    val cashFlowCardTitleColor: Color
 }

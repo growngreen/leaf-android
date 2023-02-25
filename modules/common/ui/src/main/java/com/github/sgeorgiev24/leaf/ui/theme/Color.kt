@@ -4,10 +4,12 @@ import androidx.compose.material3.ColorScheme
 import androidx.compose.ui.graphics.Color
 
 val Coral = Color(0xFFEB5C5F)
+val Cinnabar = Color(0xFFE53935)
 val GreySuit = Color(0xFF8E8E92)
 val GhostWhite = Color(0xFFF2F2F6)
 val HadfieldBlue = Color(0xFF0c79fe)
 val Platinum = Color(0xFFE3E3E8)
+val Pantone = Color(0xFF00897B)
 
 fun getColors(isLightTheme: Boolean) = if (isLightTheme) LeafLightColors else LeafDarkColors
 
