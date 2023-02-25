@@ -4,6 +4,8 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
+val Gray70 = Color(0xFF8E8E92)
+
 val color_theme_light_primary = Color(0xFF4459A9)
 val color_theme_light_onPrimary = Color(0xFFFFFFFF)
 val color_theme_light_primaryContainer = Color(0xFFDCE1FF)
