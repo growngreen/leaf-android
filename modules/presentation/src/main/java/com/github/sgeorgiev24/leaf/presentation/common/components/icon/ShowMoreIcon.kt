@@ -11,10 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.github.sgeorgiev24.leaf.presentation.R
+import com.github.sgeorgiev24.leaf.ui.theme.HadfieldBlue
+import com.onthemarket.mobile.ui.theme.Colors
 
 @Composable
 fun ShowMoreIcon(
@@ -25,9 +26,9 @@ fun ShowMoreIcon(
         modifier = modifier
             .background(
                 shape = CircleShape,
-                color = Color.White
+                color = Colors.background
             )
-            .border(1.dp, color = Color.Blue, shape = CircleShape)
+            .border(1.dp, color = HadfieldBlue, shape = CircleShape)
             .size(25.dp),
         contentAlignment = Alignment.Center
     ) {
@@ -36,7 +37,7 @@ fun ShowMoreIcon(
                 .size(23.dp),
             painter = painterResource(id = R.drawable.ic_show_more),
             contentDescription = null,
-            tint = Color.Blue
+            tint = HadfieldBlue
         )
     }
 }

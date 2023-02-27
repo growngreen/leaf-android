@@ -27,11 +27,11 @@ import com.github.sgeorgiev24.leaf.presentation.view.auth.signin.SignInScreen
 import com.github.sgeorgiev24.leaf.presentation.view.auth.signup.SignUpScreen
 import com.github.sgeorgiev24.leaf.presentation.view.auth.splash.SplashScreen
 import com.github.sgeorgiev24.leaf.presentation.view.main.home.HomeScreen
-import com.github.sgeorgiev24.leaf.ui.theme.LeafTheme
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ModalBottomSheetLayout
+import com.onthemarket.mobile.ui.theme.LeafTheme
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable

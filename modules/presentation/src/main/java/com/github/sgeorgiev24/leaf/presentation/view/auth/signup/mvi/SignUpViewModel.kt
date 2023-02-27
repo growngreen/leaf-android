@@ -55,8 +55,10 @@ constructor(
         )
         if (canExecuteNewStateEvent(event)) {
             signUp(event).run {
-                data?.let { Timber.i("Signed up successfully") }
-                // TODO: navigate to home/sign in screen
+                data?.let {
+                    navigationDispatcher.navigateTo(AuthDests.SignIn)
+                    Timber.i("Signed up successfully")
+                }
                 response?.handleNewResponse()
                 stateEvent?.let { removeStateEvent(it) }
             }

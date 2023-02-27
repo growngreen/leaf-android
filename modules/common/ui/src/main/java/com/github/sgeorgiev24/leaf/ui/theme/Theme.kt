@@ -1,16 +1,26 @@
-package com.github.sgeorgiev24.leaf.ui.theme
+package com.onthemarket.mobile.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalConfiguration
 import com.github.sgeorgiev24.leaf.model.settings.Theme
+import com.github.sgeorgiev24.leaf.ui.theme.CustomLeafTypography
+import com.github.sgeorgiev24.leaf.ui.theme.Dimensions
+import com.github.sgeorgiev24.leaf.ui.theme.LeafColors
+import com.github.sgeorgiev24.leaf.ui.theme.LeafTypography
+import com.github.sgeorgiev24.leaf.ui.theme.getColors
+import com.github.sgeorgiev24.leaf.ui.theme.getColorsPalette
+import com.github.sgeorgiev24.leaf.ui.theme.getTypography
+import com.github.sgeorgiev24.leaf.ui.theme.smallDimensions
+import com.github.sgeorgiev24.leaf.ui.theme.sw360Dimensions
+import com.github.sgeorgiev24.leaf.ui.theme.sw600Dimensions
+import com.github.sgeorgiev24.leaf.ui.theme.sw940Dimensions
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun ProvideAppColors(
-    colors: ColorScheme,
+    colors: LeafColors,
     content: @Composable () -> Unit
 ) {
     CompositionLocalProvider(LocalAppColors provides colors, content = content)
@@ -73,7 +83,7 @@ fun LeafTheme(
             ProvideTypography(typography = leafTypography) {
                 ProvideIsLightTheme(isLightTheme = isLightTheme) {
                     MaterialTheme(
-                        colorScheme = getColors(isLightTheme),
+                        colorScheme = getColorsPalette(leafColors),
                         typography = getTypography(leafTypography),
                         content = content
                     )
@@ -85,15 +95,15 @@ fun LeafTheme(
 }
 
 @Composable
-fun UpdateSystemBarsColors(isLightTheme: Boolean, colors: ColorScheme) {
+fun UpdateSystemBarsColors(isLightTheme: Boolean, colors: LeafColors) {
     val systemUiController = rememberSystemUiController()
     SideEffect {
-        systemUiController.setSystemBarsColor(color = colors.primary, darkIcons = isLightTheme)
+        systemUiController.setSystemBarsColor(color = colors.systemBarColor, darkIcons = isLightTheme)
     }
 }
 
 object LeafTheme {
-    val colors: ColorScheme
+    val colors: LeafColors
         @Composable
         get() = LocalAppColors.current
 
@@ -114,7 +124,7 @@ val Dimens: Dimensions
     @Composable
     get() = LeafTheme.dimens
 
-val Colors: ColorScheme
+val Colors: LeafColors
     @Composable
     get() = LeafTheme.colors
 

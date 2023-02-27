@@ -19,15 +19,15 @@ import com.github.sgeorgiev24.leaf.presentation.R
 import com.github.sgeorgiev24.leaf.presentation.common.components.button.LeafButton
 import com.github.sgeorgiev24.leaf.presentation.common.components.text.LeafTextLink
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.LeafOutlinedTextField
-import com.github.sgeorgiev24.leaf.presentation.common.components.util.DefaultSpacer
+import com.github.sgeorgiev24.leaf.presentation.common.components.util.HeightSpacer
 import com.github.sgeorgiev24.leaf.presentation.view.auth.signin.mvi.SignInAction
 import com.github.sgeorgiev24.leaf.presentation.view.auth.signin.mvi.SignInState
 import com.github.sgeorgiev24.leaf.ui.text.LeafScreenTitle
-import com.github.sgeorgiev24.leaf.ui.theme.Dimens
-import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 import com.github.sgeorgiev24.leaf.ui.topbar.LeafCollapsingToolbar
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
+import com.onthemarket.mobile.ui.theme.Dimens
+import com.onthemarket.mobile.ui.theme.Typographs
 
 @Composable
 fun SignInContent(
@@ -53,7 +53,7 @@ fun SignInContent(
                     )
             ) {
                 LeafScreenTitle(textResId = R.string.sign_in_title)
-                DefaultSpacer(height = Dimens.padding_vertical)
+                HeightSpacer(height = Dimens.padding_vertical)
 
                 LeafOutlinedTextField(
                     inputWrapper = state.email,
@@ -72,7 +72,7 @@ fun SignInContent(
                         action(SignInAction.OnEmailValueChange(text))
                     },
                 )
-                DefaultSpacer()
+                HeightSpacer()
 
                 LeafOutlinedTextField(
                     inputWrapper = state.password,
@@ -91,14 +91,14 @@ fun SignInContent(
                         action(SignInAction.OnPasswordValueChange(text))
                     },
                 )
-                DefaultSpacer()
+                HeightSpacer()
 
                 LeafButton(
                     titleResId = R.string.sign_in_button,
                     enabled = state.isSignInButtonEnabled,
                     onClick = { action(SignInAction.OnSignInClick) }
                 )
-                DefaultSpacer()
+                HeightSpacer()
 
                 FlowRow(
                     modifier = Modifier

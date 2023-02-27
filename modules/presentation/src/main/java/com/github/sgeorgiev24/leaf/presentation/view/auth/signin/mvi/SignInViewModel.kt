@@ -54,7 +54,6 @@ constructor(
                     Timber.i("Signed in successfully")
                     navigationDispatcher.navigateTo(MainDests.Home)
                 }
-                // TODO: navigate to home
                 response?.handleNewResponse()
                 stateEvent?.let { removeStateEvent(it) }
             }
