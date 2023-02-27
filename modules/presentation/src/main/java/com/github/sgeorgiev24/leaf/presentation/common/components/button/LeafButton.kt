@@ -15,9 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
-import com.onthemarket.mobile.ui.theme.Colors
-import com.onthemarket.mobile.ui.theme.Dimens
-import com.onthemarket.mobile.ui.theme.Typographs
+import com.github.sgeorgiev24.leaf.ui.theme.Colors
+import com.github.sgeorgiev24.leaf.ui.theme.Dimens
+import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 
 @Composable
 fun LeafButton(

@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import com.onthemarket.mobile.ui.theme.Typographs
+import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 
 @Composable
 fun LeafScreenTitle(

@@ -64,4 +64,7 @@
     <string name="home_cashflow_balance">Balance</string>
     <string name="home_add_cash_flow">Add cash flow</string>
     <string name="home_edit_categories">Edit categories</string>
+
+    <!-- Edit categories -->
+    <string name="edit_categories_title">Edit categories</string>
 </resources>

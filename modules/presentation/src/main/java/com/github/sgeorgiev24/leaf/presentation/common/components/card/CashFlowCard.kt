@@ -20,9 +20,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.github.sgeorgiev24.leaf.presentation.R
 import com.github.sgeorgiev24.leaf.ui.preview.DevicePreview
-import com.onthemarket.mobile.ui.theme.Colors
-import com.onthemarket.mobile.ui.theme.Dimens
-import com.onthemarket.mobile.ui.theme.Typographs
+import com.github.sgeorgiev24.leaf.ui.theme.Colors
+import com.github.sgeorgiev24.leaf.ui.theme.Dimens
+import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 
 @Composable
 fun CashFlowCard(

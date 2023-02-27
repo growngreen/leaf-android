@@ -38,9 +38,9 @@ import com.github.sgeorgiev24.leaf.ui.text.LeafScreenTitle
 import com.github.sgeorgiev24.leaf.ui.theme.Cinnabar
 import com.github.sgeorgiev24.leaf.ui.theme.Pantone
 import com.github.sgeorgiev24.leaf.ui.topbar.LeafCollapsingToolbar
-import com.onthemarket.mobile.ui.theme.Colors
-import com.onthemarket.mobile.ui.theme.Dimens
-import com.onthemarket.mobile.ui.theme.Typographs
+import com.github.sgeorgiev24.leaf.ui.theme.Colors
+import com.github.sgeorgiev24.leaf.ui.theme.Dimens
+import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 
 @Composable
 fun HomeContent(
@@ -73,7 +73,9 @@ fun HomeContent(
                     onSignOutClick = { action(HomeAction.OnSignOutClick) },
                     screenTitle = screenTitle
                 )
-                BottomButtons()
+                BottomButtons(
+                    onEditCategoriesClick = { action(HomeAction.OnEditCategoriesClick) }
+                )
             }
         }
     }
@@ -103,7 +105,9 @@ private fun BoxScope.TopComponents(
 }
 
 @Composable
-private fun BoxScope.BottomButtons() {
+private fun BoxScope.BottomButtons(
+    onEditCategoriesClick: () -> Unit
+) {
     Row(
         modifier = Modifier.Companion
             .align(Alignment.BottomCenter)
@@ -146,7 +150,7 @@ private fun BoxScope.BottomButtons() {
                 size = Dimens.extended_fab_corner_shape
             ),
             containerColor = Colors.buttonContainerColor,
-            onClick = {},
+            onClick = onEditCategoriesClick,
             content = {
                 Text(
                     text = stringResource(R.string.home_edit_categories),

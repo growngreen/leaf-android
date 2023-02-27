@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
-import com.onthemarket.mobile.ui.theme.Dimens
+import com.github.sgeorgiev24.leaf.ui.theme.Dimens
 
 @Composable
 fun HeightSpacer(

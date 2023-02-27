@@ -7,6 +7,7 @@ import com.github.sgeorgiev24.leaf.interactor.auth.SignOut
 import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
 import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.AuthDests
+import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.MainDests
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -24,6 +25,8 @@ constructor(
         when (action) {
             HomeAction.OnSignOutClick ->
                 signOut()
+            HomeAction.OnEditCategoriesClick ->
+                navigationDispatcher.navigateTo(MainDests.EditCategories)
         }
     }
 

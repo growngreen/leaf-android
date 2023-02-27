@@ -15,7 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.github.sgeorgiev24.leaf.presentation.R
 import com.github.sgeorgiev24.leaf.ui.theme.HadfieldBlue
-import com.onthemarket.mobile.ui.theme.Colors
+import com.github.sgeorgiev24.leaf.ui.theme.Colors
 
 @Composable
 fun ShowMoreIcon(
