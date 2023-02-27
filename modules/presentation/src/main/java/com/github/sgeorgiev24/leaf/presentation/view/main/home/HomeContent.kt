@@ -10,13 +10,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.github.sgeorgiev24.leaf.model.auth.LeafUser
 import com.github.sgeorgiev24.leaf.presentation.R
@@ -30,9 +36,9 @@ import com.github.sgeorgiev24.leaf.presentation.view.main.home.mvi.HomeState
 import com.github.sgeorgiev24.leaf.ui.preview.DevicePreview
 import com.github.sgeorgiev24.leaf.ui.text.LeafScreenTitle
 import com.github.sgeorgiev24.leaf.ui.theme.Cinnabar
-import com.github.sgeorgiev24.leaf.ui.theme.HadfieldBlue
 import com.github.sgeorgiev24.leaf.ui.theme.Pantone
 import com.github.sgeorgiev24.leaf.ui.topbar.LeafCollapsingToolbar
+import com.onthemarket.mobile.ui.theme.Colors
 import com.onthemarket.mobile.ui.theme.Dimens
 import com.onthemarket.mobile.ui.theme.Typographs
 
@@ -67,7 +73,7 @@ fun HomeContent(
                     onSignOutClick = { action(HomeAction.OnSignOutClick) },
                     screenTitle = screenTitle
                 )
-                BottomComponents()
+                BottomButtons()
             }
         }
     }
@@ -97,7 +103,7 @@ private fun BoxScope.TopComponents(
 }
 
 @Composable
-private fun BoxScope.BottomComponents() {
+private fun BoxScope.BottomButtons() {
     Row(
         modifier = Modifier.Companion
             .align(Alignment.BottomCenter)
@@ -106,27 +112,49 @@ private fun BoxScope.BottomComponents() {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                modifier = Modifier
-                    .size(23.dp),
-                painter = painterResource(id = R.drawable.ic_add),
-                contentDescription = null,
-                tint = HadfieldBlue
-            )
-            WidthSpacer(width = Dimens.padding_small)
-            Text(
-                text = stringResource(R.string.home_add_cash_flow),
-                style = Typographs.h3,
-                color = HadfieldBlue
-            )
-        }
-        Text(
-            text = stringResource(R.string.home_edit_categories),
-            style = Typographs.h3,
-            color = HadfieldBlue
+        ExtendedFloatingActionButton(
+            shape = RoundedCornerShape(
+                size = Dimens.extended_fab_corner_shape
+            ),
+            containerColor = Colors.buttonContainerColor,
+            onClick = {},
+            content = {
+                Icon(
+                    modifier = Modifier
+                        .size(23.dp),
+                    painter = painterResource(id = R.drawable.ic_add),
+                    contentDescription = null,
+                    tint = Color.White
+                )
+                WidthSpacer(width = Dimens.padding_small)
+                Text(
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                        .wrapContentWidth()
+                        .padding(vertical = Dimens.padding_small),
+                    textAlign = TextAlign.Center,
+                    style = Typographs.button1,
+                    text = stringResource(id = R.string.home_add_cash_flow),
+                    color = Colors.fabTextColor
+                )
+            },
+            elevation = FloatingActionButtonDefaults.elevation(0.dp)
+        )
+
+        ExtendedFloatingActionButton(
+            shape = RoundedCornerShape(
+                size = Dimens.extended_fab_corner_shape
+            ),
+            containerColor = Colors.buttonContainerColor,
+            onClick = {},
+            content = {
+                Text(
+                    text = stringResource(R.string.home_edit_categories),
+                    style = Typographs.h3,
+                    color = Colors.fabTextColor
+                )
+            },
+            elevation = FloatingActionButtonDefaults.elevation(0.dp)
         )
     }
 }

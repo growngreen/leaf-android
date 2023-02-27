@@ -46,4 +46,6 @@ interface LeafColors {
     val cashFlowCardBackgroundColor: Color
     val cashFlowCardValueColor: Color
     val cashFlowCardTitleColor: Color
+
+    val fabTextColor: Color
 }

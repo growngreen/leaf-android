@@ -48,4 +48,6 @@ internal object LeafDarkColors : LeafColors {
     override val cashFlowCardBackgroundColor: Color = Color.White
     override val cashFlowCardValueColor: Color = Color.Black
     override val cashFlowCardTitleColor: Color = GreySuit
+
+    override val fabTextColor: Color = Color.White
 }

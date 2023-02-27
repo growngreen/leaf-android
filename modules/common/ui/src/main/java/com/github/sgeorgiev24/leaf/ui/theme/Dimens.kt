@@ -12,7 +12,8 @@ class Dimensions(
     val padding_huge: Dp,
     val padding_horizontal: Dp,
     val padding_vertical: Dp,
-    val rounded_corner_shape: Dp
+    val rounded_corner_shape: Dp,
+    val extended_fab_corner_shape: Dp
 )
 
 val smallDimensions = Dimensions(
@@ -24,7 +25,8 @@ val smallDimensions = Dimensions(
     padding_huge = 32.dp,
     padding_horizontal = 16.dp,
     padding_vertical = 44.dp,
-    rounded_corner_shape = 10.dp
+    rounded_corner_shape = 10.dp,
+    extended_fab_corner_shape = 16.dp
 )
 
 val sw360Dimensions = Dimensions(
@@ -36,7 +38,8 @@ val sw360Dimensions = Dimensions(
     padding_huge = 64.dp,
     padding_horizontal = 20.dp,
     padding_vertical = 48.dp,
-    rounded_corner_shape = 12.dp
+    rounded_corner_shape = 12.dp,
+    extended_fab_corner_shape = 18.dp
 )
 
 val sw600Dimensions = Dimensions(
@@ -48,7 +51,8 @@ val sw600Dimensions = Dimensions(
     padding_huge = 128.dp,
     padding_horizontal = 24.dp,
     padding_vertical = 52.dp,
-    rounded_corner_shape = 14.dp
+    rounded_corner_shape = 14.dp,
+    extended_fab_corner_shape = 20.dp
 )
 
 val sw940Dimensions = Dimensions(
@@ -60,5 +64,6 @@ val sw940Dimensions = Dimensions(
     padding_huge = 256.dp,
     padding_horizontal = 28.dp,
     padding_vertical = 56.dp,
-    rounded_corner_shape = 16.dp
+    rounded_corner_shape = 16.dp,
+    extended_fab_corner_shape = 22.dp
 )
