@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import com.github.sgeorgiev24.leaf.interactor.auth.AuthStateEvent
 import com.github.sgeorgiev24.leaf.interactor.auth.SignIn
 import com.github.sgeorgiev24.leaf.interactor.validator.ValidatorStateEvent
-import com.github.sgeorgiev24.leaf.interactor.validator.Validators
+import com.github.sgeorgiev24.leaf.interactor.validator.StringValidators
 import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.InputWrapper
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
@@ -21,7 +21,7 @@ class SignInViewModel
 constructor(
     savedStateHandle: SavedStateHandle,
     private val navigationDispatcher: NavigationDispatcher,
-    private val validators: Validators,
+    private val stringValidators: StringValidators,
     private val signIn: SignIn
 ) : BaseViewModel<SignInState, SignInAction, ScreenEvent>(savedStateHandle, SignInState()) {
     override suspend fun handleActions(action: SignInAction) {
@@ -61,7 +61,7 @@ constructor(
     }
 
     private fun onEmailValueChange(value: String) {
-        val errorResId = validators.getEmailErrorOrNull(ValidatorStateEvent.ValidateEmail(value))
+        val errorResId = stringValidators.getEmailErrorOrNull(ValidatorStateEvent.ValidateEmail(value))
         updateState {
             copy(
                 email = InputWrapper(value = value, errorResId = errorResId)
@@ -71,7 +71,7 @@ constructor(
 
     private fun onPasswordValueChange(value: String) {
         val errorResId =
-            validators.getPasswordErrorOrNull(ValidatorStateEvent.ValidatePassword(value))
+            stringValidators.getPasswordErrorOrNull(ValidatorStateEvent.ValidatePassword(value))
         updateState {
             copy(
                 password = InputWrapper(value = value, errorResId = errorResId)
