@@ -68,4 +68,5 @@
     <!-- Edit categories -->
     <string name="edit_categories_title">Edit categories</string>
     <string name="edit_categories_category_name">Category name</string>
+    <string name="edit_categories_add_category">Add category</string>
 </resources>
