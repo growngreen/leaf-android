@@ -28,6 +28,15 @@ constructor(
                 onCategoryNameValueChange(action.value)
             EditCategoriesAction.OnDoneActionClick ->
                 submitEvent(ScreenEvent.ClearFocus)
+            is EditCategoriesAction.OnCategoryTypeOptionSelected ->
+                onCategoryTypeOptionSelected(uuid = action.uuid)
+        }
+    }
+
+    private fun onCategoryTypeOptionSelected(uuid: String) {
+        val selectedCategoryType = state.value.categoryTypeOptions.find { it.uuid == uuid }
+        updateState {
+            copy(selectedCategoryTypeOption = selectedCategoryType)
         }
     }
 

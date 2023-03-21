@@ -16,6 +16,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.github.sgeorgiev24.leaf.presentation.R
 import com.github.sgeorgiev24.leaf.presentation.common.components.button.LeafButton
+import com.github.sgeorgiev24.leaf.presentation.common.components.menu.LeafDropDownMenu
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.LeafOutlinedTextField
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.HeightSpacer
 import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi.EditCategoriesAction
@@ -55,6 +56,17 @@ fun EditCategoriesContent(
                 onTextChanged = { text, _ ->
                     action(EditCategoriesAction.OnCategoryNameValueChange(text))
                 },
+            )
+            HeightSpacer()
+
+            LeafDropDownMenu(
+                labelResId = R.string.edit_categories_select_type,
+                options = state.categoryTypeOptions,
+                onOptionChange = { option ->
+                    action(EditCategoriesAction.OnCategoryTypeOptionSelected(option.uuid))
+                },
+                placeholderResId = state.selectedCategoryTypeOption?.titleResId
+                    ?: R.string.dropdown_menu_default_placeholder
             )
             HeightSpacer()
 

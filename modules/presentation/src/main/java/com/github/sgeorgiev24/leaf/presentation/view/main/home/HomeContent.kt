@@ -26,9 +26,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.github.sgeorgiev24.leaf.model.auth.LeafUser
 import com.github.sgeorgiev24.leaf.presentation.R
-import com.github.sgeorgiev24.leaf.presentation.common.components.LeafDropdownMenu
 import com.github.sgeorgiev24.leaf.presentation.common.components.card.CashFlowCard
 import com.github.sgeorgiev24.leaf.presentation.common.components.icon.ShowMoreIcon
+import com.github.sgeorgiev24.leaf.presentation.common.components.menu.LeafContextMenu
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.HeightSpacer
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.WidthSpacer
 import com.github.sgeorgiev24.leaf.presentation.view.main.home.mvi.HomeAction
@@ -209,7 +209,7 @@ private fun ShowMore(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.End
     ) {
-        LeafDropdownMenu(
+        LeafContextMenu(
             icon = {
                 ShowMoreIcon()
             },

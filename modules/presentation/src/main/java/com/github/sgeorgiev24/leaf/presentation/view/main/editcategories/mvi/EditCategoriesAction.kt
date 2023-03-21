@@ -8,4 +8,6 @@ sealed class EditCategoriesAction {
     data class OnCategoryNameValueChange(
         val value: String
     ) : EditCategoriesAction()
+
+    data class OnCategoryTypeOptionSelected(val uuid: String) : EditCategoriesAction()
 }

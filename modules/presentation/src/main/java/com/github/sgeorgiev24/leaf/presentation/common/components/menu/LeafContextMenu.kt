@@ -1,4 +1,4 @@
-package com.github.sgeorgiev24.leaf.presentation.common.components
+package com.github.sgeorgiev24.leaf.presentation.common.components.menu
 
 import androidx.annotation.DrawableRes
 import androidx.compose.material.DropdownMenu
@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import com.github.sgeorgiev24.leaf.presentation.R
 
 @Composable
-fun LeafDropdownMenu(
+fun LeafContextMenu(
     modifier: Modifier = Modifier,
     options: List<Pair<String, () -> Unit>>,
     icon: @Composable () -> Unit,

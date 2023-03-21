@@ -69,4 +69,10 @@
     <string name="edit_categories_title">Edit categories</string>
     <string name="edit_categories_category_name">Category name</string>
     <string name="edit_categories_add_category">Add category</string>
+    <string name="edit_categories_select_type">Select category type</string>
+    <string name="edit_categories_income_type">Income</string>
+    <string name="edit_categories_expense_type">Expense</string>
+
+    <!-- Dropdown menu -->
+    <string name="dropdown_menu_default_placeholder">Please select</string>
 </resources>
