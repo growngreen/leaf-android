@@ -1,5 +1,7 @@
 package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi
 
+import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.data.EditCategoriesTab
+
 sealed class EditCategoriesAction {
     object OnBack : EditCategoriesAction()
 
@@ -10,4 +12,6 @@ sealed class EditCategoriesAction {
     ) : EditCategoriesAction()
 
     data class OnCategoryTypeOptionSelected(val uuid: String) : EditCategoriesAction()
+
+    data class OnCategoryTabClick(val tab: EditCategoriesTab) : EditCategoriesAction()
 }

@@ -41,6 +41,10 @@ constructor(
                 submitEvent(ScreenEvent.ClearFocus)
             is EditCategoriesAction.OnCategoryTypeOptionSelected ->
                 onCategoryTypeOptionSelected(uuid = action.uuid)
+            is EditCategoriesAction.OnCategoryTabClick ->
+                updateState {
+                    copy(selectedTab = action.tab)
+                }
         }
     }
 
