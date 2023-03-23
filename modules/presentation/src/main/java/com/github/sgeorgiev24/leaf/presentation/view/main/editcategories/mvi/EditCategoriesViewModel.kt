@@ -1,6 +1,9 @@
 package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi
 
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.viewModelScope
+import com.github.sgeorgiev24.leaf.interactor.category.CategoryStateEvent
+import com.github.sgeorgiev24.leaf.interactor.category.GetCategoryIcons
 import com.github.sgeorgiev24.leaf.interactor.validator.ValidatorStateEvent
 import com.github.sgeorgiev24.leaf.interactor.validator.StringValidators
 import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
@@ -8,6 +11,7 @@ import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.Inpu
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,10 +20,17 @@ class EditCategoriesViewModel
 constructor(
     savedStateHandle: SavedStateHandle,
     private val navigationDispatcher: NavigationDispatcher,
-    private val stringValidators: StringValidators
+    private val stringValidators: StringValidators,
+    private val getCategoryIcons: GetCategoryIcons
 ) : BaseViewModel<EditCategoriesState, EditCategoriesAction, ScreenEvent>(
     savedStateHandle, EditCategoriesState()
 ) {
+    init {
+        viewModelScope.launch {
+            getCategoryIcons()
+        }
+    }
+
     override suspend fun handleActions(action: EditCategoriesAction) {
         when (action) {
             EditCategoriesAction.OnBack ->
@@ -37,6 +48,17 @@ constructor(
         val selectedCategoryType = state.value.categoryTypeOptions.find { it.uuid == uuid }
         updateState {
             copy(selectedCategoryTypeOption = selectedCategoryType)
+        }
+    }
+
+    private suspend fun getCategoryIcons() {
+        val event = CategoryStateEvent.GetCategoryIcons
+        if (canExecuteNewStateEvent(event)) {
+            getCategoryIcons(event).run {
+                data?.let {
+                    updateState { copy(categoryIcons = it) }
+                }
+            }
         }
     }
 

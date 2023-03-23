@@ -1,10 +1,12 @@
 package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories
 
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -24,6 +26,7 @@ fun EditCategoriesScreen() {
     HandleScreenEvents(viewModel)
 
     BottomSheetRoot(
+        modifier = Modifier.fillMaxHeight(.95f),
         viewModel = viewModel,
         onCloseClick = { viewModel.submitAction(EditCategoriesAction.OnBack) },
         content = {

@@ -7,5 +7,6 @@ import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.data.ca
 data class EditCategoriesState(
     val categoryName: InputWrapper = InputWrapper(),
     val categoryTypeOptions: List<CategoryTypeOption> = categoryTypeMenuOptions,
-    val selectedCategoryTypeOption: CategoryTypeOption? = null
+    val selectedCategoryTypeOption: CategoryTypeOption? = null,
+    val categoryIcons: List<String> = emptyList()
 )

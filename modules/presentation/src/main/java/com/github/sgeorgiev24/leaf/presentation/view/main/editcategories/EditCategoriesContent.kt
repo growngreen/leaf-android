@@ -1,9 +1,20 @@
 package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
@@ -14,6 +25,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import coil.compose.SubcomposeAsyncImage
 import com.github.sgeorgiev24.leaf.presentation.R
 import com.github.sgeorgiev24.leaf.presentation.common.components.button.LeafButton
 import com.github.sgeorgiev24.leaf.presentation.common.components.menu.LeafDropDownMenu
@@ -24,6 +37,8 @@ import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi.Edi
 import com.github.sgeorgiev24.leaf.ui.preview.PreviewComposable
 import com.github.sgeorgiev24.leaf.ui.text.LeafScreenTitle
 import com.github.sgeorgiev24.leaf.ui.theme.Dimens
+import com.github.sgeorgiev24.leaf.ui.theme.Platinum
+import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 import com.github.sgeorgiev24.leaf.ui.topbar.LeafCollapsingToolbar
 
 @Composable
@@ -37,7 +52,9 @@ fun EditCategoriesContent(
         onBack = { },
         isBackButtonShown = false
     ) {
-        Column {
+        Column(
+            modifier = Modifier.fillMaxSize()
+        ) {
             LeafScreenTitle(text = stringResource(id = R.string.edit_categories_title))
 
             LeafOutlinedTextField(
@@ -82,7 +99,36 @@ fun EditCategoriesContent(
                 )
             }
 
-            HeightSpacer(height = Dimens.padding_huge)
+            Text(
+                text = stringResource(R.string.edit_categories_select_icon),
+                style = Typographs.smallBold
+            )
+            LazyVerticalGrid(
+                columns = GridCells.Adaptive(45.dp),
+                contentPadding = PaddingValues(Dimens.padding_medium),
+                verticalArrangement = Arrangement.spacedBy(Dimens.padding_medium),
+                horizontalArrangement = Arrangement.spacedBy(Dimens.padding_medium)
+            ) {
+                items(state.categoryIcons) {
+                    Box(
+                        modifier = Modifier
+                            .background(
+                                color = Platinum,
+                                shape = RoundedCornerShape(percent = 50)
+                            )
+                            .padding(Dimens.padding_medium)
+                    ) {
+                        SubcomposeAsyncImage(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .aspectRatio(1f),
+                            model = it,
+                            contentDescription = null
+                        )
+                    }
+                }
+            }
+            HeightSpacer()
         }
         // TODO: add dropdown for category type
         // TODO: add list of all categories by category type

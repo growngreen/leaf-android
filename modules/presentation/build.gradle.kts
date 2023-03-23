@@ -18,4 +18,5 @@ dependencies {
     implementation(AppDependencies.timber)
     implementation(AppDependencies.composeNavigation)
     implementation(AppDependencies.accompanist)
+    implementation(AppDependencies.coil)
 }
