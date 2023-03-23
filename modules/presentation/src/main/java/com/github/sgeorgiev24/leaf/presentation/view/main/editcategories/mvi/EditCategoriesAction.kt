@@ -7,6 +7,8 @@ sealed class EditCategoriesAction {
 
     object OnDoneActionClick : EditCategoriesAction()
 
+    object OnAddCategoryClick : EditCategoriesAction()
+
     data class OnCategoryNameValueChange(
         val value: String
     ) : EditCategoriesAction()

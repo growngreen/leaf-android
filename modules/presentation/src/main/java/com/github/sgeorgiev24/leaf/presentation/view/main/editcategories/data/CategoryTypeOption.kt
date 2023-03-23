@@ -1,6 +1,7 @@
 package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.data
 
 import androidx.annotation.StringRes
+import com.github.sgeorgiev24.leaf.model.category.add.CategoryType
 import com.github.sgeorgiev24.leaf.presentation.R
 import com.github.sgeorgiev24.leaf.presentation.model.dropdown.DropdownMenuOption
 import java.util.*

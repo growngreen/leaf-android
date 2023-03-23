@@ -2,6 +2,7 @@ package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.github.sgeorgiev24.leaf.interactor.category.AddCategory
 import com.github.sgeorgiev24.leaf.interactor.category.CategoryStateEvent
 import com.github.sgeorgiev24.leaf.interactor.category.GetCategoryIcons
 import com.github.sgeorgiev24.leaf.interactor.validator.ValidatorStateEvent
@@ -21,7 +22,8 @@ constructor(
     savedStateHandle: SavedStateHandle,
     private val navigationDispatcher: NavigationDispatcher,
     private val stringValidators: StringValidators,
-    private val getCategoryIcons: GetCategoryIcons
+    private val getCategoryIcons: GetCategoryIcons,
+    private val addCategory: AddCategory
 ) : BaseViewModel<EditCategoriesState, EditCategoriesAction, ScreenEvent>(
     savedStateHandle, EditCategoriesState()
 ) {
@@ -49,6 +51,23 @@ constructor(
                 updateState {
                     copy(selectedCategoryIcon = action.icon)
                 }
+            EditCategoriesAction.OnAddCategoryClick ->
+                onAddCategoryClick()
+        }
+    }
+
+    private suspend fun onAddCategoryClick() {
+        val event = CategoryStateEvent.AddCategory(
+            title = state.value.categoryName.value,
+            type = state.value.selectedCategoryTypeOption?.categoryType,
+            icon = state.value.selectedCategoryIcon
+        )
+        if (canExecuteNewStateEvent(event)) {
+            addCategory(event).run {
+                data?.let {
+                    navigationDispatcher.navigateBack()
+                }
+            }
         }
     }
 

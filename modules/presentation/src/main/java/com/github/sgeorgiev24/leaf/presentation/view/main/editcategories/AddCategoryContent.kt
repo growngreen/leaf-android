@@ -77,7 +77,9 @@ fun AddCategoryContent(
         }
     )
 
-    AddCategoryButton()
+    AddCategoryButton(
+        onClick = { action(EditCategoriesAction.OnAddCategoryClick) }
+    )
 
     CategoryIcons(
         icons = state.categoryIcons,
@@ -106,7 +108,9 @@ private fun CategoryTypeDropdown(
 }
 
 @Composable
-private fun AddCategoryButton() {
+private fun AddCategoryButton(
+    onClick: () -> Unit
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.End
@@ -115,7 +119,7 @@ private fun AddCategoryButton() {
             modifier = Modifier
                 .fillMaxWidth(.5f),
             titleResId = R.string.edit_categories_add_category,
-            onClick = { }
+            onClick = onClick
         )
     }
 }

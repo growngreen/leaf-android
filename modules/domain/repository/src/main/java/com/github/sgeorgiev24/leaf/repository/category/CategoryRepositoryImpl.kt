@@ -1,10 +1,12 @@
 package com.github.sgeorgiev24.leaf.repository.category
 
+import com.github.sgeorgiev24.leaf.model.category.add.Category
 import com.github.sgeorgiev24.leaf.model.state.DataState
 import com.github.sgeorgiev24.leaf.model.state.StateEvent
 import com.github.sgeorgiev24.leaf.model.state.buildSuccessData
 import com.github.sgeorgiev24.leaf.network.category.CategoryDataSource
 import com.github.sgeorgiev24.leaf.repository.Secret
+import com.github.sgeorgiev24.leaf.repository.category.mapper.toDto
 import com.github.sgeorgiev24.leaf.repository.extensions.toDataState
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -32,4 +34,11 @@ constructor(
 
         return buildSuccessData(data = urls, stateEvent = stateEvent)
     }
+
+    override suspend fun addCategory(
+        stateEvent: StateEvent,
+        category: Category
+    ) = categoryDataSource
+        .addCategory(category.toDto())
+        .toDataState(stateEvent)
 }
