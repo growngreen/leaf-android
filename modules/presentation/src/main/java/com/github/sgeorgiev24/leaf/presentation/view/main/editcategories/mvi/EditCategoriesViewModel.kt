@@ -45,6 +45,10 @@ constructor(
                 updateState {
                     copy(selectedTab = action.tab)
                 }
+            is EditCategoriesAction.OnCategoryIconClick ->
+                updateState {
+                    copy(selectedCategoryIcon = action.icon)
+                }
         }
     }
 
@@ -60,7 +64,9 @@ constructor(
         if (canExecuteNewStateEvent(event)) {
             getCategoryIcons(event).run {
                 data?.let {
-                    updateState { copy(categoryIcons = it) }
+                    updateState {
+                        copy(categoryIcons = it, selectedCategoryIcon = it.firstOrNull())
+                    }
                 }
             }
         }

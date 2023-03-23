@@ -2,6 +2,8 @@ package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,12 +15,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -31,6 +35,7 @@ import com.github.sgeorgiev24.leaf.presentation.common.components.button.LeafBut
 import com.github.sgeorgiev24.leaf.presentation.common.components.menu.LeafDropDownMenu
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.LeafOutlinedTextField
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.HeightSpacer
+import com.github.sgeorgiev24.leaf.presentation.common.util.conditional
 import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.data.CategoryTypeOption
 import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi.EditCategoriesAction
 import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi.EditCategoriesState
@@ -74,7 +79,13 @@ fun AddCategoryContent(
 
     AddCategoryButton()
 
-    CategoryIcons(icons = state.categoryIcons)
+    CategoryIcons(
+        icons = state.categoryIcons,
+        selectedIcon = state.selectedCategoryIcon,
+        onIconClick = { icon ->
+            action(EditCategoriesAction.OnCategoryIconClick(icon))
+        }
+    )
 }
 
 @Composable
@@ -111,7 +122,9 @@ private fun AddCategoryButton() {
 
 @Composable
 private fun CategoryIcons(
-    icons: List<String>
+    icons: List<String>,
+    selectedIcon: String? = null,
+    onIconClick: (String) -> Unit
 ) {
     Text(
         text = stringResource(R.string.edit_categories_select_icon),
@@ -130,7 +143,15 @@ private fun CategoryIcons(
                         color = Platinum,
                         shape = RoundedCornerShape(percent = 50)
                     )
+                    .conditional(it == selectedIcon) {
+                        border(
+                            width = 3.dp,
+                            color = Color.Black,
+                            shape = CircleShape
+                        )
+                    }
                     .padding(Dimens.padding_medium)
+                    .clickable { onIconClick(it) }
             ) {
                 SubcomposeAsyncImage(
                     modifier = Modifier

@@ -10,5 +10,6 @@ data class EditCategoriesState(
     val categoryTypeOptions: List<CategoryTypeOption> = categoryTypeMenuOptions,
     val selectedCategoryTypeOption: CategoryTypeOption? = null,
     val categoryIcons: List<String> = emptyList(),
+    val selectedCategoryIcon: String? = null,
     val selectedTab: EditCategoriesTab = EditCategoriesTab.CATEGORIES_LIST
 )

@@ -14,4 +14,6 @@ sealed class EditCategoriesAction {
     data class OnCategoryTypeOptionSelected(val uuid: String) : EditCategoriesAction()
 
     data class OnCategoryTabClick(val tab: EditCategoriesTab) : EditCategoriesAction()
+
+    data class OnCategoryIconClick(val icon: String) : EditCategoriesAction()
 }
