@@ -81,7 +81,8 @@ object AppDependencies {
         "com.google.firebase:firebase-analytics-ktx",
         "com.google.firebase:firebase-auth",
         "com.google.firebase:firebase-messaging",
-        "com.google.firebase:firebase-firestore-ktx"
+        "com.google.firebase:firebase-firestore-ktx",
+        "com.google.firebase:firebase-storage-ktx"
     )
 
     val retrofit = dependencies(

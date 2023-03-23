@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import com.github.sgeorgiev24.leaf.interactor.auth.AuthStateEvent
 import com.github.sgeorgiev24.leaf.interactor.auth.GetUser
 import com.github.sgeorgiev24.leaf.interactor.auth.SignOut
+import com.github.sgeorgiev24.leaf.interactor.category.GetCategoryIcons
 import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
 import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.AuthDests
@@ -18,7 +19,8 @@ constructor(
     savedStateHandle: SavedStateHandle,
     private val navigationDispatcher: NavigationDispatcher,
     private val getUser: GetUser,
-    private val signOut: SignOut
+    private val signOut: SignOut,
+    private val getCategoryIcons: GetCategoryIcons
 ) : BaseViewModel<HomeState, HomeAction, Unit>(savedStateHandle, HomeState()) {
 
     override suspend fun handleActions(action: HomeAction) {
