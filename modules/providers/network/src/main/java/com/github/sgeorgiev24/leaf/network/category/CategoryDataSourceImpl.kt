@@ -46,4 +46,25 @@ constructor(
                     }
                 }
         }
+
+    override suspend fun getCategories(userId: String) =
+        suspendCoroutine { continuation ->
+            val result = mutableListOf<CategoryDto>()
+
+            firestore.collection(CATEGORIES_COLLECTION_PATH)
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        task.result?.forEach {
+                            val category = it.toObject(CategoryDto::class.java)
+                            if (category.userId == userId) {
+                                result.add(category)
+                            }
+                        }
+                        continuation.resumeWith(Result.success(NetworkResult.Success(result)))
+                    } else {
+                        continuation.resumeWith(Result.success(NetworkResult.Error(message = task.exception?.message)))
+                    }
+                }
+        }
 }

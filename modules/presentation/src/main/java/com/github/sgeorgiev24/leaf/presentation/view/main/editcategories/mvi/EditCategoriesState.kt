@@ -1,5 +1,6 @@
 package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi
 
+import com.github.sgeorgiev24.leaf.model.category.add.Category
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.InputWrapper
 import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.data.CategoryTypeOption
 import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.data.EditCategoriesTab
@@ -11,5 +12,6 @@ data class EditCategoriesState(
     val selectedCategoryTypeOption: CategoryTypeOption? = null,
     val categoryIcons: List<String> = emptyList(),
     val selectedCategoryIcon: String? = null,
-    val selectedTab: EditCategoriesTab = EditCategoriesTab.CATEGORIES_LIST
+    val selectedTab: EditCategoriesTab = EditCategoriesTab.CATEGORIES_LIST,
+    val categories: List<Category> = emptyList()
 )

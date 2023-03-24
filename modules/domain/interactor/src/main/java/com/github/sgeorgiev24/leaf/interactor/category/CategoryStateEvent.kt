@@ -17,4 +17,9 @@ sealed class CategoryStateEvent : StateEvent {
         override fun errorInfo() = "Error while trying to add category"
         override fun shouldDisplayProgressBar() = true
     }
+
+    object GetAllCategories : CategoryStateEvent() {
+        override fun errorInfo() = "Error while trying to get all categories"
+        override fun shouldDisplayProgressBar() = true
+    }
 }

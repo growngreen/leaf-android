@@ -6,6 +6,7 @@ import com.github.sgeorgiev24.leaf.model.state.StateEvent
 import com.github.sgeorgiev24.leaf.model.state.buildSuccessData
 import com.github.sgeorgiev24.leaf.network.category.CategoryDataSource
 import com.github.sgeorgiev24.leaf.repository.Secret
+import com.github.sgeorgiev24.leaf.repository.category.mapper.toDomain
 import com.github.sgeorgiev24.leaf.repository.category.mapper.toDto
 import com.github.sgeorgiev24.leaf.repository.extensions.toDataState
 import javax.inject.Inject
@@ -41,4 +42,13 @@ constructor(
     ) = categoryDataSource
         .addCategory(category.toDto())
         .toDataState(stateEvent)
+
+    override suspend fun getCategories(
+        stateEvent: StateEvent,
+        userId: String
+    ) = categoryDataSource
+        .getCategories(userId = userId)
+        .toDataState(stateEvent) {
+            it.map { categoryDto -> categoryDto.toDomain() }
+        }
 }

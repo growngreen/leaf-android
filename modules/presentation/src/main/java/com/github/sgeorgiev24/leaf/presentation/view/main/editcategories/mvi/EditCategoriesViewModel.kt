@@ -1,9 +1,11 @@
 package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.github.sgeorgiev24.leaf.interactor.category.AddCategory
 import com.github.sgeorgiev24.leaf.interactor.category.CategoryStateEvent
+import com.github.sgeorgiev24.leaf.interactor.category.GetAllCategories
 import com.github.sgeorgiev24.leaf.interactor.category.GetCategoryIcons
 import com.github.sgeorgiev24.leaf.interactor.validator.ValidatorStateEvent
 import com.github.sgeorgiev24.leaf.interactor.validator.StringValidators
@@ -23,7 +25,8 @@ constructor(
     private val navigationDispatcher: NavigationDispatcher,
     private val stringValidators: StringValidators,
     private val getCategoryIcons: GetCategoryIcons,
-    private val addCategory: AddCategory
+    private val addCategory: AddCategory,
+    private val getAllCategories: GetAllCategories
 ) : BaseViewModel<EditCategoriesState, EditCategoriesAction, ScreenEvent>(
     savedStateHandle, EditCategoriesState()
 ) {
@@ -53,6 +56,21 @@ constructor(
                 }
             EditCategoriesAction.OnAddCategoryClick ->
                 onAddCategoryClick()
+        }
+    }
+
+    suspend fun getAllCategories() {
+        val event = CategoryStateEvent.GetAllCategories
+        if (canExecuteNewStateEvent(event)) {
+            getAllCategories(event).run {
+                data?.let {
+                    Log.d("debug1914", "getAllCategories: $it")
+
+                    updateState {
+                        copy(categories = it)
+                    }
+                }
+            }
         }
     }
 

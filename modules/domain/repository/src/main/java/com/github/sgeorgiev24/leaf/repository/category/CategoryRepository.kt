@@ -16,4 +16,9 @@ interface CategoryRepository {
         stateEvent: StateEvent,
         category: Category
     ): DataState<Unit>
+
+    suspend fun getCategories(
+        stateEvent: StateEvent,
+        userId: String
+    ): DataState<List<Category>>
 }
