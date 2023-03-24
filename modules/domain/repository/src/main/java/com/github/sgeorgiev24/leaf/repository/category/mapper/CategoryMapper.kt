@@ -7,6 +7,7 @@ import com.github.sgeorgiev24.leaf.network.category.model.CategoryDto
 import com.github.sgeorgiev24.leaf.network.category.model.CategoryTypeDto
 
 fun Category.toDto() = CategoryDto(
+    userId = userId,
     title = title,
     type = type.toDto(),
     icon = icon
