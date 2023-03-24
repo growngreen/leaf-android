@@ -2,7 +2,6 @@ package com.github.sgeorgiev24.leaf.repository.auth
 
 import com.github.sgeorgiev24.leaf.model.state.StateEvent
 import com.github.sgeorgiev24.leaf.network.auth.AuthDataSource
-import com.github.sgeorgiev24.leaf.repository.auth.mapper.toDomain
 import com.github.sgeorgiev24.leaf.repository.extensions.toDataState
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -37,11 +36,6 @@ constructor(
             password = password
         )
         .toDataState(stateEvent)
-
-    override fun getUser(stateEvent: StateEvent) =
-        authDataSource
-            .getUser()
-            .toDataState(stateEvent) { it?.toDomain() }
 
     override fun signOut(stateEvent: StateEvent) =
         authDataSource

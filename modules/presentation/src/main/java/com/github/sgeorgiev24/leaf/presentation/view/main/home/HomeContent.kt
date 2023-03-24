@@ -222,7 +222,7 @@ private fun ShowMore(
 @Composable
 fun HomePreview() {
     HomeContent(
-        state = HomeState(LeafUser(null, "Siso")),
+        state = HomeState(LeafUser("", null, "Siso")),
         action = {}
     )
 }

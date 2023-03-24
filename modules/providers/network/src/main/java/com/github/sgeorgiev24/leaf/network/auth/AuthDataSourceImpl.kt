@@ -49,6 +49,7 @@ class AuthDataSourceImpl
 
     override fun getUser() =
         firebaseAuth.currentUser?.let {
+            it.uid
             NetworkResult.Success(it.toUserDto())
         } ?: run {
             NetworkResult.Success(null)
