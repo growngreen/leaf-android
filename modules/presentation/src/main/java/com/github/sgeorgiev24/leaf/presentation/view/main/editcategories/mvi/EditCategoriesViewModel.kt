@@ -1,6 +1,5 @@
 package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.github.sgeorgiev24.leaf.interactor.category.AddCategory
@@ -56,6 +55,14 @@ constructor(
                 }
             EditCategoriesAction.OnAddCategoryClick ->
                 onAddCategoryClick()
+            is EditCategoriesAction.CollapseCategory ->
+                updateState {
+                    copy(revealedCategory = null)
+                }
+            is EditCategoriesAction.ExpandCategory ->
+                updateState {
+                    copy(revealedCategory = action.category)
+                }
         }
     }
 
@@ -64,8 +71,6 @@ constructor(
         if (canExecuteNewStateEvent(event)) {
             getAllCategories(event).run {
                 data?.let {
-                    Log.d("debug1914", "getAllCategories: $it")
-
                     updateState {
                         copy(categories = it)
                     }

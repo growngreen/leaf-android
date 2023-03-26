@@ -73,7 +73,6 @@ fun LeafCollapsingToolbar(
                             .size(40.dp),
                         painter = painterResource(id = R.drawable.ic_arrow_back),
                         contentDescription = null,
-//                        tint = Colors.otmAppBarIconsTint
                     )
                 }
             }

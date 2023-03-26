@@ -1,5 +1,6 @@
 package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi
 
+import com.github.sgeorgiev24.leaf.model.category.add.Category
 import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.data.EditCategoriesTab
 
 sealed class EditCategoriesAction {
@@ -18,4 +19,8 @@ sealed class EditCategoriesAction {
     data class OnCategoryTabClick(val tab: EditCategoriesTab) : EditCategoriesAction()
 
     data class OnCategoryIconClick(val icon: String) : EditCategoriesAction()
+
+    data class CollapseCategory(val category: Category) : EditCategoriesAction()
+
+    data class ExpandCategory(val category: Category) : EditCategoriesAction()
 }

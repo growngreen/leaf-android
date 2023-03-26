@@ -13,5 +13,6 @@ data class EditCategoriesState(
     val categoryIcons: List<String> = emptyList(),
     val selectedCategoryIcon: String? = null,
     val selectedTab: EditCategoriesTab = EditCategoriesTab.CATEGORIES_LIST,
-    val categories: List<Category> = emptyList()
+    val categories: List<Category> = emptyList(),
+    val revealedCategory: Category? = null
 )
