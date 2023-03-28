@@ -149,13 +149,13 @@ private fun BoxScope.BottomButtons(
             shape = RoundedCornerShape(
                 size = Dimens.extended_fab_corner_shape
             ),
-            containerColor = Colors.buttonContainerColor,
+            containerColor = Colors.secondaryButtonContainerColor,
             onClick = onEditCategoriesClick,
             content = {
                 Text(
                     text = stringResource(R.string.home_edit_categories),
                     style = Typographs.h3,
-                    color = Colors.fabTextColor
+                    color = Colors.secondaryButtonTextColor
                 )
             },
             elevation = FloatingActionButtonDefaults.elevation(0.dp)

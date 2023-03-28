@@ -39,6 +39,9 @@ interface LeafColors {
     val disabledButtonContainerColor: Color
     val buttonTextColor: Color
 
+    val secondaryButtonContainerColor: Color
+    val secondaryButtonTextColor: Color
+
     val textFieldBackgroundColor: Color
     val textFieldFocusedBackgroundColor: Color
     val textFieldUnfocusedBorderColor: Color
