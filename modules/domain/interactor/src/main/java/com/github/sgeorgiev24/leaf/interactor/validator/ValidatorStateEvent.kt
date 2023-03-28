@@ -10,6 +10,13 @@ sealed class ValidatorStateEvent : StateEvent {
         override fun shouldDisplayProgressBar() = false
     }
 
+    data class ValidateCategoryName(
+        val categoryName: String
+    ) : ValidatorStateEvent() {
+        override fun errorInfo() = "Error while trying to validate category name"
+        override fun shouldDisplayProgressBar() = false
+    }
+
     data class ValidatePassword(
         val password: String
     ) : ValidatorStateEvent() {

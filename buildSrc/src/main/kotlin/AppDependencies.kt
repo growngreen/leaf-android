@@ -25,6 +25,7 @@ object AppDependencies {
         const val chromeTabs = "1.4.0"
         const val lumberJack = "5.2.0"
         const val lifecycleLog = "3.1.1"
+        const val coil = "2.2.2"
     }
 
     // keep alphabetized
@@ -38,6 +39,7 @@ object AppDependencies {
     const val lifecycleLog = "com.github.Chesire:LifecykleLog:${Version.lifecycleLog}"
     const val lottie = "com.airbnb.android:lottie-compose:${Version.lottie}"
     const val chromeTabs = "androidx.browser:browser:${Version.chromeTabs}"
+    const val coil = "io.coil-kt:coil-compose:${Version.coil}"
 
     const val crypto = "com.google.crypto.tink:tink-android:1.7.0"
 
@@ -81,7 +83,8 @@ object AppDependencies {
         "com.google.firebase:firebase-analytics-ktx",
         "com.google.firebase:firebase-auth",
         "com.google.firebase:firebase-messaging",
-        "com.google.firebase:firebase-firestore-ktx"
+        "com.google.firebase:firebase-firestore-ktx",
+        "com.google.firebase:firebase-storage-ktx"
     )
 
     val retrofit = dependencies(

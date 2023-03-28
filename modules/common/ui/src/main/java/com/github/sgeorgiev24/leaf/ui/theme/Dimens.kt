@@ -13,7 +13,8 @@ class Dimensions(
     val padding_horizontal: Dp,
     val padding_vertical: Dp,
     val rounded_corner_shape: Dp,
-    val extended_fab_corner_shape: Dp
+    val extended_fab_corner_shape: Dp,
+    val swipeToRevealOffset: Dp
 )
 
 val smallDimensions = Dimensions(
@@ -26,7 +27,8 @@ val smallDimensions = Dimensions(
     padding_horizontal = 16.dp,
     padding_vertical = 44.dp,
     rounded_corner_shape = 10.dp,
-    extended_fab_corner_shape = 16.dp
+    extended_fab_corner_shape = 16.dp,
+    swipeToRevealOffset = 280.dp
 )
 
 val sw360Dimensions = Dimensions(
@@ -39,7 +41,8 @@ val sw360Dimensions = Dimensions(
     padding_horizontal = 20.dp,
     padding_vertical = 48.dp,
     rounded_corner_shape = 12.dp,
-    extended_fab_corner_shape = 18.dp
+    extended_fab_corner_shape = 18.dp,
+    swipeToRevealOffset = 300.dp
 )
 
 val sw600Dimensions = Dimensions(
@@ -52,7 +55,8 @@ val sw600Dimensions = Dimensions(
     padding_horizontal = 24.dp,
     padding_vertical = 52.dp,
     rounded_corner_shape = 14.dp,
-    extended_fab_corner_shape = 20.dp
+    extended_fab_corner_shape = 20.dp,
+    swipeToRevealOffset = 320.dp
 )
 
 val sw940Dimensions = Dimensions(
@@ -65,5 +69,6 @@ val sw940Dimensions = Dimensions(
     padding_horizontal = 28.dp,
     padding_vertical = 56.dp,
     rounded_corner_shape = 16.dp,
-    extended_fab_corner_shape = 22.dp
+    extended_fab_corner_shape = 22.dp,
+    swipeToRevealOffset = 340.dp
 )

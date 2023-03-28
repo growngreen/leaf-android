@@ -2,8 +2,8 @@ package com.github.sgeorgiev24.leaf.presentation.view.auth.splash.mvi
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.github.sgeorgiev24.leaf.interactor.auth.AuthStateEvent
-import com.github.sgeorgiev24.leaf.interactor.auth.GetUser
+import com.github.sgeorgiev24.leaf.interactor.user.GetUser
+import com.github.sgeorgiev24.leaf.interactor.user.UserStateEvent
 import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
 import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.AuthDests
@@ -29,7 +29,7 @@ constructor(
     }
 
     private suspend fun getUser() {
-        getUser(AuthStateEvent.GetUser).run {
+        getUser(UserStateEvent.GetUser).run {
             delay(1000)
             data?.let {
                 navigationDispatcher.navigateTo(MainDests.Home)

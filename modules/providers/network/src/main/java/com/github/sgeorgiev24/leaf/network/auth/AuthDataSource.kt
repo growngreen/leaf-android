@@ -13,7 +13,7 @@ interface AuthDataSource {
     suspend fun signIn(
         email: String,
         password: String
-    ): NetworkResult<Unit>
+    ): NetworkResult<LeafUserDto?>
 
     fun getUser(): NetworkResult<LeafUserDto?>
 

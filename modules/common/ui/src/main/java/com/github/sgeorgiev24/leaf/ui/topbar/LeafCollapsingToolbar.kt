@@ -20,8 +20,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.github.sgeorgiev24.leaf.ui.R
 import com.github.sgeorgiev24.leaf.ui.theme.GhostWhite
-import com.onthemarket.mobile.ui.theme.Dimens
-import com.onthemarket.mobile.ui.theme.Typographs
+import com.github.sgeorgiev24.leaf.ui.theme.Dimens
+import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 
 @Composable
 fun LeafCollapsingToolbar(
@@ -73,7 +73,6 @@ fun LeafCollapsingToolbar(
                             .size(40.dp),
                         painter = painterResource(id = R.drawable.ic_arrow_back),
                         contentDescription = null,
-//                        tint = Colors.otmAppBarIconsTint
                     )
                 }
             }

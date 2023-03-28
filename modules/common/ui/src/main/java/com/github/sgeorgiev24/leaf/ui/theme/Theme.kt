@@ -1,21 +1,10 @@
-package com.onthemarket.mobile.ui.theme
+package com.github.sgeorgiev24.leaf.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalConfiguration
 import com.github.sgeorgiev24.leaf.model.settings.Theme
-import com.github.sgeorgiev24.leaf.ui.theme.CustomLeafTypography
-import com.github.sgeorgiev24.leaf.ui.theme.Dimensions
-import com.github.sgeorgiev24.leaf.ui.theme.LeafColors
-import com.github.sgeorgiev24.leaf.ui.theme.LeafTypography
-import com.github.sgeorgiev24.leaf.ui.theme.getColors
-import com.github.sgeorgiev24.leaf.ui.theme.getColorsPalette
-import com.github.sgeorgiev24.leaf.ui.theme.getTypography
-import com.github.sgeorgiev24.leaf.ui.theme.smallDimensions
-import com.github.sgeorgiev24.leaf.ui.theme.sw360Dimensions
-import com.github.sgeorgiev24.leaf.ui.theme.sw600Dimensions
-import com.github.sgeorgiev24.leaf.ui.theme.sw940Dimensions
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable

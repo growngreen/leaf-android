@@ -26,9 +26,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.github.sgeorgiev24.leaf.model.auth.LeafUser
 import com.github.sgeorgiev24.leaf.presentation.R
-import com.github.sgeorgiev24.leaf.presentation.common.components.LeafDropdownMenu
 import com.github.sgeorgiev24.leaf.presentation.common.components.card.CashFlowCard
 import com.github.sgeorgiev24.leaf.presentation.common.components.icon.ShowMoreIcon
+import com.github.sgeorgiev24.leaf.presentation.common.components.menu.LeafContextMenu
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.HeightSpacer
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.WidthSpacer
 import com.github.sgeorgiev24.leaf.presentation.view.main.home.mvi.HomeAction
@@ -38,9 +38,9 @@ import com.github.sgeorgiev24.leaf.ui.text.LeafScreenTitle
 import com.github.sgeorgiev24.leaf.ui.theme.Cinnabar
 import com.github.sgeorgiev24.leaf.ui.theme.Pantone
 import com.github.sgeorgiev24.leaf.ui.topbar.LeafCollapsingToolbar
-import com.onthemarket.mobile.ui.theme.Colors
-import com.onthemarket.mobile.ui.theme.Dimens
-import com.onthemarket.mobile.ui.theme.Typographs
+import com.github.sgeorgiev24.leaf.ui.theme.Colors
+import com.github.sgeorgiev24.leaf.ui.theme.Dimens
+import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 
 @Composable
 fun HomeContent(
@@ -73,7 +73,9 @@ fun HomeContent(
                     onSignOutClick = { action(HomeAction.OnSignOutClick) },
                     screenTitle = screenTitle
                 )
-                BottomButtons()
+                BottomButtons(
+                    onEditCategoriesClick = { action(HomeAction.OnEditCategoriesClick) }
+                )
             }
         }
     }
@@ -103,7 +105,9 @@ private fun BoxScope.TopComponents(
 }
 
 @Composable
-private fun BoxScope.BottomButtons() {
+private fun BoxScope.BottomButtons(
+    onEditCategoriesClick: () -> Unit
+) {
     Row(
         modifier = Modifier.Companion
             .align(Alignment.BottomCenter)
@@ -145,13 +149,13 @@ private fun BoxScope.BottomButtons() {
             shape = RoundedCornerShape(
                 size = Dimens.extended_fab_corner_shape
             ),
-            containerColor = Colors.buttonContainerColor,
-            onClick = {},
+            containerColor = Colors.secondaryButtonContainerColor,
+            onClick = onEditCategoriesClick,
             content = {
                 Text(
                     text = stringResource(R.string.home_edit_categories),
                     style = Typographs.h3,
-                    color = Colors.fabTextColor
+                    color = Colors.secondaryButtonTextColor
                 )
             },
             elevation = FloatingActionButtonDefaults.elevation(0.dp)
@@ -205,7 +209,7 @@ private fun ShowMore(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.End
     ) {
-        LeafDropdownMenu(
+        LeafContextMenu(
             icon = {
                 ShowMoreIcon()
             },
@@ -218,7 +222,7 @@ private fun ShowMore(
 @Composable
 fun HomePreview() {
     HomeContent(
-        state = HomeState(LeafUser(null, "Siso")),
+        state = HomeState(LeafUser("", null, "Siso")),
         action = {}
     )
 }

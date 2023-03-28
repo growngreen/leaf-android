@@ -41,6 +41,9 @@ internal object LeafDarkColors : LeafColors {
     override val disabledButtonContainerColor: Color = HadfieldBlue.copy(alpha = .5f)
     override val buttonTextColor: Color = Platinum
 
+    override val secondaryButtonContainerColor: Color = GreySuit
+    override val secondaryButtonTextColor: Color = GreySuit
+
     override val textFieldBackgroundColor: Color = Color.White
     override val textFieldFocusedBackgroundColor: Color = HadfieldBlue
     override val textFieldUnfocusedBorderColor: Color = Color.Transparent

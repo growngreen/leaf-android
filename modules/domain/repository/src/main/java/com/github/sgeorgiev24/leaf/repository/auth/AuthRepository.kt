@@ -16,9 +16,7 @@ interface AuthRepository {
         stateEvent: StateEvent,
         email: String,
         password: String
-    ): DataState<Unit>
-
-    fun getUser(stateEvent: StateEvent): DataState<LeafUser?>
+    ): DataState<LeafUser?>
 
     fun signOut(stateEvent: StateEvent): DataState<Unit>
 }

@@ -26,8 +26,8 @@ import com.github.sgeorgiev24.leaf.ui.text.LeafScreenTitle
 import com.github.sgeorgiev24.leaf.ui.topbar.LeafCollapsingToolbar
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
-import com.onthemarket.mobile.ui.theme.Dimens
-import com.onthemarket.mobile.ui.theme.Typographs
+import com.github.sgeorgiev24.leaf.ui.theme.Dimens
+import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 
 @Composable
 fun SignInContent(

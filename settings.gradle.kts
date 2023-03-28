@@ -2,6 +2,7 @@ rootProject.name = ("Leaf")
 include(
     "app",
     "modules:common:ui",
+    "modules:common:base",
     "modules:presentation",
     "modules:domain:repository",
     "modules:domain:interactor",

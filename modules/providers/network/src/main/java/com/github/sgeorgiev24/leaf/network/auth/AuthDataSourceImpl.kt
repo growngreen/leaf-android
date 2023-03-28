@@ -40,9 +40,12 @@ class AuthDataSourceImpl
             firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        continuation.resumeWith(Result.success(NetworkResult.Success(Unit)))
+                        val user = task.result?.user?.toUserDto()
+                        continuation.resumeWith(Result.success(NetworkResult.Success(user)))
                     } else {
-                        continuation.resumeWith(Result.success(NetworkResult.Error(message = task.exception?.message)))
+                        continuation.resumeWith(
+                            Result.success(NetworkResult.Error(message = task.exception?.message))
+                        )
                     }
                 }
         }

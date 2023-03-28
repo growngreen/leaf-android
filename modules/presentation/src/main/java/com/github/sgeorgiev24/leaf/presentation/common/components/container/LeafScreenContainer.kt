@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.onthemarket.mobile.ui.theme.Dimens
+import com.github.sgeorgiev24.leaf.ui.theme.Dimens
 
 @Composable
 fun LeafScreenContainer(

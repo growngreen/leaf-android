@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import com.github.sgeorgiev24.leaf.interactor.auth.AuthStateEvent
 import com.github.sgeorgiev24.leaf.interactor.auth.SignUp
 import com.github.sgeorgiev24.leaf.interactor.validator.ValidatorStateEvent
-import com.github.sgeorgiev24.leaf.interactor.validator.Validators
+import com.github.sgeorgiev24.leaf.interactor.validator.StringValidators
 import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.InputWrapper
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
@@ -21,7 +21,7 @@ constructor(
     savedStateHandle: SavedStateHandle,
     private val navigationDispatcher: NavigationDispatcher,
     private val signUp: SignUp,
-    private val validators: Validators
+    private val stringValidators: StringValidators
 ) : BaseViewModel<SignUpState, SignUpAction, ScreenEvent>(savedStateHandle, SignUpState()) {
 
     override suspend fun handleActions(action: SignUpAction) {
@@ -67,7 +67,7 @@ constructor(
 
     private fun onPasswordValueChange(value: String) {
         val errorResId =
-            validators.getPasswordErrorOrNull(ValidatorStateEvent.ValidatePassword(value))
+            stringValidators.getPasswordErrorOrNull(ValidatorStateEvent.ValidatePassword(value))
         updateState {
             copy(
                 password = InputWrapper(value = value, errorResId = errorResId)
@@ -76,7 +76,7 @@ constructor(
     }
 
     private fun onConfirmPasswordValueChange(value: String) {
-        val errorResId = validators.getConfirmPasswordErrorOrNull(
+        val errorResId = stringValidators.getConfirmPasswordErrorOrNull(
             ValidatorStateEvent.ValidateConfirmPassword(
                 password = state.value.password.value,
                 confirmPassword = value
@@ -90,7 +90,7 @@ constructor(
     }
 
     private fun onEmailValueChange(value: String) {
-        val errorResId = validators.getEmailErrorOrNull(ValidatorStateEvent.ValidateEmail(value))
+        val errorResId = stringValidators.getEmailErrorOrNull(ValidatorStateEvent.ValidateEmail(value))
         updateState {
             copy(
                 email = InputWrapper(value = value, errorResId = errorResId)
@@ -99,7 +99,7 @@ constructor(
     }
 
     private fun onNameValueChange(value: String) {
-        val errorResId = validators.getNameErrorOrNull(ValidatorStateEvent.ValidateUserName(value))
+        val errorResId = stringValidators.getNameErrorOrNull(ValidatorStateEvent.ValidateUserName(value))
         updateState {
             copy(
                 name = InputWrapper(value = value, errorResId = errorResId)

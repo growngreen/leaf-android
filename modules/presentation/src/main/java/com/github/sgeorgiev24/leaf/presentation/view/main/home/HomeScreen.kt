@@ -8,6 +8,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.github.sgeorgiev24.leaf.presentation.common.RootScreen
 import com.github.sgeorgiev24.leaf.presentation.view.main.home.mvi.HomeViewModel
 import com.github.sgeorgiev24.leaf.ui.lifecycle.ObserverLifecycleEvents
+import kotlinx.coroutines.launch
 
 @Composable
 fun HomeScreen() {
@@ -17,7 +18,11 @@ fun HomeScreen() {
     val coroutineScope = rememberCoroutineScope()
 
     ObserverLifecycleEvents(
-        onResume = { viewModel.getUser() }
+        onResume = {
+            coroutineScope.launch {
+                viewModel.getUser()
+            }
+        }
     )
 
     RootScreen(
