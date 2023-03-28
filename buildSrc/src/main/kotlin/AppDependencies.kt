@@ -120,7 +120,8 @@ object AppDependencies {
     val accompanist = dependencies(
         "com.google.accompanist:accompanist-insets:$accompanistVersion",
         "com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion",
-        "com.google.accompanist:accompanist-flowlayout:$accompanistVersion"
+        "com.google.accompanist:accompanist-flowlayout:$accompanistVersion",
+        "com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion"
     )
 
     val composeNavigation = dependencies(

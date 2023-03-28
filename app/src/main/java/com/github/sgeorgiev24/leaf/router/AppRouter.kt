@@ -1,4 +1,5 @@
 @file:OptIn(ExperimentalMaterialApi::class)
+
 package com.github.sgeorgiev24.leaf.router
 
 import androidx.compose.animation.AnimatedVisibility
@@ -14,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.plusAssign
 import com.github.sgeorgiev24.leaf.presentation.common.components.bottombar.BottomNavigationItem
@@ -29,12 +31,17 @@ import com.github.sgeorgiev24.leaf.presentation.view.auth.signup.SignUpScreen
 import com.github.sgeorgiev24.leaf.presentation.view.auth.splash.SplashScreen
 import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.EditCategoriesScreen
 import com.github.sgeorgiev24.leaf.presentation.view.main.home.HomeScreen
+import com.github.sgeorgiev24.leaf.ui.theme.Colors
+import com.github.sgeorgiev24.leaf.ui.theme.ForestGreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ModalBottomSheetLayout
 import com.github.sgeorgiev24.leaf.ui.theme.LeafTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @Composable
 fun AppRouter(
@@ -49,6 +56,8 @@ fun AppRouter(
     val showBottomBar = navController
         .currentBackStackEntryAsState().value?.destination?.route in
         BottomNavigationItem.values().map { it.destination.route }
+
+    SetSystemBarsBackground(navController = navController)
 
     LaunchedEffect(key1 = Unit) {
         navigationDispatcher.navigationCommands.collectLatest { navigationCommand ->
@@ -103,6 +112,28 @@ fun AppRouter(
     }
 }
 
+@Composable
+private fun SetSystemBarsBackground(
+    navController: NavHostController
+) {
+    val coroutineScope = rememberCoroutineScope()
+    val systemUiController = rememberSystemUiController()
+    val currentDestination = navController.currentBackStackEntryAsState().value?.destination
+    val backgroundColor = Colors.background
+    LaunchedEffect(currentDestination) {
+        if (currentDestination?.route == AuthDests.Splash.route) {
+            systemUiController.setStatusBarColor(ForestGreen)
+            systemUiController.setNavigationBarColor(ForestGreen)
+        } else {
+            coroutineScope.launch {
+                delay(1500)
+                systemUiController.setStatusBarColor(backgroundColor)
+                systemUiController.setNavigationBarColor(backgroundColor)
+            }
+        }
+    }
+}
+
 private fun NavGraphBuilder.authDestinations() {
     composableHolder(AuthDests.Splash) {
         SplashScreen()
@@ -139,8 +170,10 @@ fun rememberFullScreenBottomSheetNavigator(
             snapshotFlow { sheetState.isAnimationRunning }
                 .collectLatest {
                     with(sheetState) {
-                        val isOpening = currentValue == ModalBottomSheetValue.Hidden && targetValue == ModalBottomSheetValue.HalfExpanded
-                        val isClosing = currentValue == ModalBottomSheetValue.Expanded && targetValue == ModalBottomSheetValue.HalfExpanded
+                        val isOpening =
+                            currentValue == ModalBottomSheetValue.Hidden && targetValue == ModalBottomSheetValue.HalfExpanded
+                        val isClosing =
+                            currentValue == ModalBottomSheetValue.Expanded && targetValue == ModalBottomSheetValue.HalfExpanded
                         when {
                             isOpening -> animateTo(ModalBottomSheetValue.Expanded)
                             isClosing -> animateTo(ModalBottomSheetValue.Hidden)

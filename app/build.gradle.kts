@@ -31,6 +31,7 @@ dependencies {
 
     implementation(AppDependencies.timber)
     implementation(AppDependencies.dataStorePreferences)
+    implementation(AppDependencies.accompanist)
 
     testRuntimeOnly(AppDependencies.Test.jUnitRuntime)
 }

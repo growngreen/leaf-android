@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.SplashScreenTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#228b22</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="postSplashScreenTheme">@style/Theme.Leaf</item>
+
+        <item name="android:statusBarColor">#228b22</item>
+        <item name="android:navigationBarColor">#228b22</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

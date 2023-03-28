@@ -3,6 +3,7 @@ package com.github.sgeorgiev24.leaf.ui.theme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.ui.graphics.Color
 
+val ForestGreen = Color(0xFF228b22)
 val Coral = Color(0xFFEB5C5F)
 val Cinnabar = Color(0xFFE53935)
 val GreySuit = Color(0xFF8E8E92)
