@@ -4,10 +4,11 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.github.sgeorgiev24.leaf.interactor.category.AddCategory
 import com.github.sgeorgiev24.leaf.interactor.category.CategoryStateEvent
+import com.github.sgeorgiev24.leaf.interactor.category.DeleteCategory
 import com.github.sgeorgiev24.leaf.interactor.category.GetAllCategories
 import com.github.sgeorgiev24.leaf.interactor.category.GetCategoryIcons
-import com.github.sgeorgiev24.leaf.interactor.validator.ValidatorStateEvent
 import com.github.sgeorgiev24.leaf.interactor.validator.StringValidators
+import com.github.sgeorgiev24.leaf.interactor.validator.ValidatorStateEvent
 import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.InputWrapper
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
@@ -25,7 +26,8 @@ constructor(
     private val stringValidators: StringValidators,
     private val getCategoryIcons: GetCategoryIcons,
     private val addCategory: AddCategory,
-    private val getAllCategories: GetAllCategories
+    private val getAllCategories: GetAllCategories,
+    private val deleteCategory: DeleteCategory
 ) : BaseViewModel<EditCategoriesState, EditCategoriesAction, ScreenEvent>(
     savedStateHandle, EditCategoriesState()
 ) {
@@ -63,6 +65,8 @@ constructor(
                 updateState {
                     copy(revealedCategory = action.category)
                 }
+            is EditCategoriesAction.OnDeleteCategoryClick ->
+                deleteCategory(action.categoryId)
         }
     }
 
@@ -74,6 +78,17 @@ constructor(
                     updateState {
                         copy(categories = it)
                     }
+                }
+            }
+        }
+    }
+
+    private suspend fun deleteCategory(categoryId: String) {
+        val event = CategoryStateEvent.DeleteCategory(categoryId)
+        if (canExecuteNewStateEvent(event)) {
+            deleteCategory(stateEvent = event).run {
+                data?.let {
+                    getAllCategories()
                 }
             }
         }

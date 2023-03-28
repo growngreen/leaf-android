@@ -8,5 +8,7 @@ interface CategoryDataSource {
 
     suspend fun addCategory(category: CategoryDto): NetworkResult<Unit>
 
+    suspend fun deleteCategory(categoryId: String): NetworkResult<Unit>
+
     suspend fun getCategories(userId: String): NetworkResult<List<CategoryDto>>
 }

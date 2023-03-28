@@ -47,6 +47,20 @@ constructor(
                 }
         }
 
+    override suspend fun deleteCategory(categoryId: String) =
+        suspendCoroutine { continuation ->
+            firestore.collection(CATEGORIES_COLLECTION_PATH)
+                .document(categoryId)
+                .delete()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        continuation.resumeWith(Result.success(NetworkResult.Success(Unit)))
+                    } else {
+                        continuation.resumeWith(Result.success(NetworkResult.Error(message = task.exception?.message)))
+                    }
+                }
+        }
+
     override suspend fun getCategories(userId: String) =
         suspendCoroutine { continuation ->
             val result = mutableListOf<CategoryDto>()
@@ -56,7 +70,7 @@ constructor(
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         task.result?.forEach {
-                            val category = it.toObject(CategoryDto::class.java)
+                            val category = it.toObject(CategoryDto::class.java).copy(id = it.id)
                             if (category.userId == userId) {
                                 result.add(category)
                             }

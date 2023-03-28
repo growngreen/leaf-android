@@ -31,6 +31,7 @@ constructor(
         userId: String,
         stateEvent: CategoryStateEvent.AddCategory
     ) = Category(
+        id = "",
         userId = userId,
         title = stateEvent.title,
         type = stateEvent.type ?: CategoryType.INCOME,

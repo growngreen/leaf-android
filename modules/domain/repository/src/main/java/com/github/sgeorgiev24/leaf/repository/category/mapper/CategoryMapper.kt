@@ -7,6 +7,7 @@ import com.github.sgeorgiev24.leaf.network.category.model.CategoryDto
 import com.github.sgeorgiev24.leaf.network.category.model.CategoryTypeDto
 
 fun Category.toDto() = CategoryDto(
+    id = id,
     userId = userId,
     title = title,
     type = type.toDto(),
@@ -14,6 +15,7 @@ fun Category.toDto() = CategoryDto(
 )
 
 fun CategoryDto.toDomain() = Category(
+    id = id,
     userId = userId,
     title = title,
     type = type.toDomain(),

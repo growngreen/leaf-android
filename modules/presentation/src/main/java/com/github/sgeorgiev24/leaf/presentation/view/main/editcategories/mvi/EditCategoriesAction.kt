@@ -10,6 +10,8 @@ sealed class EditCategoriesAction {
 
     object OnAddCategoryClick : EditCategoriesAction()
 
+    data class OnDeleteCategoryClick(val categoryId: String) : EditCategoriesAction()
+
     data class OnCategoryNameValueChange(
         val value: String
     ) : EditCategoriesAction()

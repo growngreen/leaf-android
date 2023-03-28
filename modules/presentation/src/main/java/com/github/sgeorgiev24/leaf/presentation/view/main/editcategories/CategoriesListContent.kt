@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
@@ -57,35 +58,35 @@ fun CategoriesListContent(
     action: (EditCategoriesAction) -> Unit
 ) {
     LazyColumn {
-        items(state.categories.size) { index ->
-            val category = state.categories.getOrNull(index)
-            category?.let {
-                Box(
+        items(items = state.categories, key = Category::id) { category ->
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .animateItemPlacement()
+            ) {
+                CategoryItem(
+                    modifier = Modifier.align(Alignment.CenterStart),
+                    category = category,
+                    isRevealed = state.revealedCategory == category,
+                    onCollapse = { action(EditCategoriesAction.CollapseCategory(it)) },
+                    onExpand = { action(EditCategoriesAction.ExpandCategory(it)) }
+                )
+                AnimatedVisibility(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .animateItemPlacement()
+                        .align(Alignment.CenterEnd),
+                    visible = state.revealedCategory == category,
+                    enter = fadeIn(tween(500)),
+                    exit = fadeOut(tween(500))
                 ) {
-                    CategoryItem(
-                        modifier = Modifier.align(Alignment.CenterStart),
-                        category = it,
-                        isRevealed = state.revealedCategory == it,
-                        onCollapse = { action(EditCategoriesAction.CollapseCategory(it)) },
-                        onExpand = { action(EditCategoriesAction.ExpandCategory(it)) }
+                    CategoryActions(
+                        category = category,
+                        deleteCategory = {
+                            action(EditCategoriesAction.OnDeleteCategoryClick(it))
+                        }
                     )
-                    AnimatedVisibility(
-                        modifier = Modifier
-                            .align(Alignment.CenterEnd),
-                        visible = state.revealedCategory == it,
-                        enter = fadeIn(tween(500)),
-                        exit = fadeOut(tween(500))
-                    ) {
-                        CategoryActions(
-                            category = it
-                        )
-                    }
                 }
-                HeightSpacer()
             }
+            HeightSpacer()
         }
     }
 }
@@ -165,7 +166,8 @@ fun CategoryItem(
 @Composable
 fun CategoryActions(
     modifier: Modifier = Modifier,
-    category: Category
+    category: Category,
+    deleteCategory: (String) -> Unit
 ) {
     Row(
         modifier = modifier
@@ -189,7 +191,9 @@ fun CategoryActions(
         IconButton(
             modifier = Modifier
                 .size(30.dp),
-            onClick = { }
+            onClick = {
+                deleteCategory(category.id)
+            }
         ) {
             Icon(
                 modifier = Modifier

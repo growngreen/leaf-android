@@ -18,6 +18,13 @@ sealed class CategoryStateEvent : StateEvent {
         override fun shouldDisplayProgressBar() = true
     }
 
+    data class DeleteCategory(
+        val categoryId: String
+    ) : CategoryStateEvent() {
+        override fun errorInfo() = "Error while trying to delete category"
+        override fun shouldDisplayProgressBar() = true
+    }
+
     object GetAllCategories : CategoryStateEvent() {
         override fun errorInfo() = "Error while trying to get all categories"
         override fun shouldDisplayProgressBar() = true

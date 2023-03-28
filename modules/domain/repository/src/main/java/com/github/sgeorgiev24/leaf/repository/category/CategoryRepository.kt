@@ -17,6 +17,11 @@ interface CategoryRepository {
         category: Category
     ): DataState<Unit>
 
+    suspend fun deleteCategory(
+        stateEvent: StateEvent,
+        categoryId: String
+    ): DataState<Unit>
+
     suspend fun getCategories(
         stateEvent: StateEvent,
         userId: String

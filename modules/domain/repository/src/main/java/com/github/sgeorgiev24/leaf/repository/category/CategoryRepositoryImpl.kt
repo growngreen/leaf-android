@@ -43,6 +43,13 @@ constructor(
         .addCategory(category.toDto())
         .toDataState(stateEvent)
 
+    override suspend fun deleteCategory(
+        stateEvent: StateEvent,
+        categoryId: String
+    ) = categoryDataSource
+        .deleteCategory(categoryId)
+        .toDataState(stateEvent)
+
     override suspend fun getCategories(
         stateEvent: StateEvent,
         userId: String
