@@ -7,8 +7,6 @@ sealed class AuthDests : NavigationAction {
     object Splash : AuthDests() {
         override val route: String
             get() = "splash"
-        override val navAnimation: NavAnimation
-            get() = NavAnimation.horizontalSlide()
     }
     object SignUp : AuthDests() {
         override val route: String
@@ -20,7 +18,5 @@ sealed class AuthDests : NavigationAction {
     object SignIn : AuthDests() {
         override val route: String
             get() = "signIn"
-        override val navAnimation: NavAnimation
-            get() = NavAnimation.horizontalSlide()
     }
 }
