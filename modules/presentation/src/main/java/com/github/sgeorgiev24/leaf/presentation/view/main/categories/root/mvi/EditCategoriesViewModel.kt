@@ -1,4 +1,4 @@
-package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi
+package com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.mvi
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope

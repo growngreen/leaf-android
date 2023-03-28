@@ -29,7 +29,7 @@ import com.github.sgeorgiev24.leaf.presentation.navigation.wrapper.composableHol
 import com.github.sgeorgiev24.leaf.presentation.view.auth.signin.SignInScreen
 import com.github.sgeorgiev24.leaf.presentation.view.auth.signup.SignUpScreen
 import com.github.sgeorgiev24.leaf.presentation.view.auth.splash.SplashScreen
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.EditCategoriesScreen
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.EditCategoriesScreen
 import com.github.sgeorgiev24.leaf.presentation.view.main.home.HomeScreen
 import com.github.sgeorgiev24.leaf.ui.theme.Colors
 import com.github.sgeorgiev24.leaf.ui.theme.ForestGreen

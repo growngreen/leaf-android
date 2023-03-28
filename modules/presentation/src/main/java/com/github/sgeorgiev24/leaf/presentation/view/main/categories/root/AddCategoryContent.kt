@@ -1,4 +1,4 @@
-package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories
+package com.github.sgeorgiev24.leaf.presentation.view.main.categories
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
@@ -36,9 +36,9 @@ import com.github.sgeorgiev24.leaf.presentation.common.components.menu.LeafDropD
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.LeafOutlinedTextField
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.HeightSpacer
 import com.github.sgeorgiev24.leaf.presentation.common.util.conditional
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.data.CategoryTypeOption
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi.EditCategoriesAction
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi.EditCategoriesState
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.data.CategoryTypeOption
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.mvi.EditCategoriesAction
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.mvi.EditCategoriesState
 import com.github.sgeorgiev24.leaf.ui.preview.PreviewComposable
 import com.github.sgeorgiev24.leaf.ui.theme.Dimens
 import com.github.sgeorgiev24.leaf.ui.theme.Platinum

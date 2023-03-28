@@ -1,4 +1,4 @@
-package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories
+package com.github.sgeorgiev24.leaf.presentation.view.main.categories
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
@@ -44,8 +44,8 @@ import coil.compose.SubcomposeAsyncImage
 import com.github.sgeorgiev24.leaf.model.category.add.Category
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.HeightSpacer
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.WidthSpacer
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi.EditCategoriesAction
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi.EditCategoriesState
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.mvi.EditCategoriesAction
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.mvi.EditCategoriesState
 import com.github.sgeorgiev24.leaf.ui.theme.Dimens
 import com.github.sgeorgiev24.leaf.ui.theme.GreySuit
 import com.github.sgeorgiev24.leaf.ui.theme.Platinum

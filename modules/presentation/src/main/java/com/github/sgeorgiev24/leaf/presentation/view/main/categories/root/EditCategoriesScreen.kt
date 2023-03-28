@@ -1,4 +1,4 @@
-package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories
+package com.github.sgeorgiev24.leaf.presentation.view.main.categories
 
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
@@ -15,8 +15,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import com.github.sgeorgiev24.leaf.presentation.common.BottomSheetRoot
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi.EditCategoriesAction
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi.EditCategoriesViewModel
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.mvi.EditCategoriesAction
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.mvi.EditCategoriesViewModel
 import com.github.sgeorgiev24.leaf.ui.lifecycle.ObserverLifecycleEvents
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
