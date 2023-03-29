@@ -66,10 +66,9 @@ constructor(
         }
 
     override suspend fun getCachedCategory(
-        stateEvent: StateEvent,
-        categoryId: String
+        stateEvent: StateEvent
     ) = categoryCacheDataSource
-        .get(categoryId)
+        .get()
         .toDataState(stateEvent) { it.toDomain() }
 
     override suspend fun setCachedCategory(
