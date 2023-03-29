@@ -23,6 +23,7 @@ import com.github.sgeorgiev24.leaf.presentation.common.components.bottombar.Leaf
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationCommand
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
 import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.AuthDests
+import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.CategoryDests
 import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.MainDests
 import com.github.sgeorgiev24.leaf.presentation.navigation.wrapper.bottomSheetHolder
 import com.github.sgeorgiev24.leaf.presentation.navigation.wrapper.composableHolder
@@ -30,6 +31,7 @@ import com.github.sgeorgiev24.leaf.presentation.view.auth.signin.SignInScreen
 import com.github.sgeorgiev24.leaf.presentation.view.auth.signup.SignUpScreen
 import com.github.sgeorgiev24.leaf.presentation.view.auth.splash.SplashScreen
 import com.github.sgeorgiev24.leaf.presentation.view.main.categories.EditCategoriesScreen
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.edit.EditCategoryScreen
 import com.github.sgeorgiev24.leaf.presentation.view.main.home.HomeScreen
 import com.github.sgeorgiev24.leaf.ui.theme.Colors
 import com.github.sgeorgiev24.leaf.ui.theme.ForestGreen
@@ -104,6 +106,7 @@ fun AppRouter(
                     ) {
                         authDestinations()
                         mainDestinations()
+                        categoryDestinations()
                     }
                 },
                 drawerShape = RectangleShape,
@@ -150,8 +153,14 @@ private fun NavGraphBuilder.mainDestinations() {
     composableHolder(MainDests.Home) {
         HomeScreen()
     }
-    bottomSheetHolder(MainDests.EditCategories) {
+}
+
+private fun NavGraphBuilder.categoryDestinations() {
+    bottomSheetHolder(CategoryDests.EditCategories) {
         EditCategoriesScreen()
+    }
+    bottomSheetHolder(CategoryDests.EditCategory) {
+        EditCategoryScreen()
     }
 }
 

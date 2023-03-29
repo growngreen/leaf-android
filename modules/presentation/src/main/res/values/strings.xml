@@ -78,4 +78,7 @@
     <!-- Dropdown menu -->
     <string name="dropdown_menu_default_placeholder">Please select</string>
     <string name="edit_categories_select_icon">Select category icon</string>
+
+    <!-- Edit category -->
+    <string name="edit_category_title">Edit category</string>
 </resources>
