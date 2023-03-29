@@ -82,6 +82,9 @@ fun CategoriesListContent(
                         category = category,
                         deleteCategory = {
                             action(EditCategoriesAction.OnDeleteCategoryClick(it))
+                        },
+                        editCategory = {
+                            action(EditCategoriesAction.OnEditCategoryClick(it))
                         }
                     )
                 }
@@ -167,7 +170,8 @@ fun CategoryItem(
 fun CategoryActions(
     modifier: Modifier = Modifier,
     category: Category,
-    deleteCategory: (String) -> Unit
+    deleteCategory: (String) -> Unit,
+    editCategory: (Category) -> Unit
 ) {
     Row(
         modifier = modifier
@@ -178,7 +182,9 @@ fun CategoryActions(
         IconButton(
             modifier = Modifier
                 .size(30.dp),
-            onClick = { }
+            onClick = {
+                editCategory(category)
+            }
         ) {
             Icon(
                 modifier = Modifier

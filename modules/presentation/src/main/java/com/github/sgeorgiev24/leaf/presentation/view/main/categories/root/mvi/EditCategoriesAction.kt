@@ -12,6 +12,8 @@ sealed class EditCategoriesAction {
 
     data class OnDeleteCategoryClick(val categoryId: String) : EditCategoriesAction()
 
+    data class OnEditCategoryClick(val category: Category) : EditCategoriesAction()
+
     data class OnCategoryNameValueChange(
         val value: String
     ) : EditCategoriesAction()

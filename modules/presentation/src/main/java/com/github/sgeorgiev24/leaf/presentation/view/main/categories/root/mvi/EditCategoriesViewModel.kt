@@ -9,10 +9,12 @@ import com.github.sgeorgiev24.leaf.interactor.category.GetAllCategories
 import com.github.sgeorgiev24.leaf.interactor.category.GetCategoryIcons
 import com.github.sgeorgiev24.leaf.interactor.validator.StringValidators
 import com.github.sgeorgiev24.leaf.interactor.validator.ValidatorStateEvent
+import com.github.sgeorgiev24.leaf.model.category.add.Category
 import com.github.sgeorgiev24.leaf.presentation.common.BaseViewModel
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.InputWrapper
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
+import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.CategoryDests
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -66,7 +68,9 @@ constructor(
                     copy(revealedCategory = action.category)
                 }
             is EditCategoriesAction.OnDeleteCategoryClick ->
-                deleteCategory(action.categoryId)
+                onDeleteCategory(action.categoryId)
+            is EditCategoriesAction.OnEditCategoryClick ->
+                onEditCategory(action.category)
         }
     }
 
@@ -83,7 +87,11 @@ constructor(
         }
     }
 
-    private suspend fun deleteCategory(categoryId: String) {
+    private suspend fun onEditCategory(category: Category) {
+        navigationDispatcher.navigateTo(CategoryDests.EditCategory)
+    }
+
+    private suspend fun onDeleteCategory(categoryId: String) {
         val event = CategoryStateEvent.DeleteCategory(categoryId)
         if (canExecuteNewStateEvent(event)) {
             deleteCategory(stateEvent = event).run {
