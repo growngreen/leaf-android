@@ -38,6 +38,7 @@ BottomSheetRoot(
     title: String = "",
     isVisible: Boolean = false,
     linkHeader: String = "",
+    isLinkEnabled: Boolean = true,
     isLinkVisible: Boolean = false,
     onLinkHeaderCLick: () -> Unit = {},
     content: @Composable () -> Unit,
@@ -96,10 +97,14 @@ BottomSheetRoot(
                         modifier = Modifier
                             .padding(bottom = Dimens.padding_small, end = Dimens.padding_small),
                         title = linkHeader,
-                        style = Typographs.button1
-                    ) {
-                        onLinkHeaderCLick()
-                    }
+                        style = Typographs.button1,
+                        color = if (isLinkEnabled) Color.Blue else Color.Gray,
+                        onClick = {
+                            if (isLinkEnabled) {
+                                onLinkHeaderCLick()
+                            }
+                        }
+                    )
                 }
             }
             Column(

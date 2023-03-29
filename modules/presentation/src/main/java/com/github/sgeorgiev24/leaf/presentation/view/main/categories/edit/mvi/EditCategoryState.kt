@@ -7,4 +7,7 @@ data class EditCategoryState(
     val categoryName: InputWrapper = InputWrapper(),
     val selectedCategoryIcon: String = "",
     val categoryIcons: List<String> = emptyList()
-)
+) {
+    val isSaveButtonEnabled
+        get() = categoryName.isValid
+}

@@ -16,6 +16,7 @@ import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.Inpu
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
 import com.github.sgeorgiev24.leaf.presentation.navigation.NavigationDispatcher
 import com.github.sgeorgiev24.leaf.presentation.navigation.destinations.CategoryDests
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.data.EditCategoriesTab
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -52,9 +53,7 @@ constructor(
             is EditCategoriesAction.OnCategoryTypeOptionSelected ->
                 onCategoryTypeOptionSelected(uuid = action.uuid)
             is EditCategoriesAction.OnCategoryTabClick ->
-                updateState {
-                    copy(selectedTab = action.tab)
-                }
+                onCategoryTabClick(action.tab)
             is EditCategoriesAction.OnCategoryIconClick ->
                 updateState {
                     copy(selectedCategoryIcon = action.icon)
@@ -89,6 +88,12 @@ constructor(
                 response?.handleNewResponse()
                 stateEvent?.let { removeStateEvent(it) }
             }
+        }
+    }
+
+    private fun onCategoryTabClick(tab: EditCategoriesTab) {
+        updateState {
+            copy(selectedTab = tab, isSaveLinkVisible = tab == EditCategoriesTab.ADD_CATEGORY)
         }
     }
 

@@ -14,5 +14,10 @@ data class EditCategoriesState(
     val selectedCategoryIcon: String? = null,
     val selectedTab: EditCategoriesTab = EditCategoriesTab.CATEGORIES_LIST,
     val categories: List<Category> = emptyList(),
-    val revealedCategory: Category? = null
-)
+    val revealedCategory: Category? = null,
+    val isSaveLinkVisible: Boolean = false
+) {
+    val isSaveButtonEnabled
+        get() = categoryName.isValid &&
+            selectedCategoryTypeOption != null
+}

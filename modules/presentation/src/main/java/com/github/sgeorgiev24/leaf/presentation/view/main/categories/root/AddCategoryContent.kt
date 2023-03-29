@@ -7,10 +7,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -31,7 +29,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import com.github.sgeorgiev24.leaf.presentation.R
-import com.github.sgeorgiev24.leaf.presentation.common.components.button.LeafButton
 import com.github.sgeorgiev24.leaf.presentation.common.components.menu.LeafDropDownMenu
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.LeafOutlinedTextField
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.HeightSpacer
@@ -77,10 +74,6 @@ fun AddCategoryContent(
         }
     )
 
-    AddCategoryButton(
-        onClick = { action(EditCategoriesAction.OnAddCategoryClick) }
-    )
-
     CategoryIcons(
         icons = state.categoryIcons,
         selectedIcon = state.selectedCategoryIcon,
@@ -105,23 +98,6 @@ private fun CategoryTypeDropdown(
         placeholderResId = placeholderResId
     )
     HeightSpacer()
-}
-
-@Composable
-private fun AddCategoryButton(
-    onClick: () -> Unit
-) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.End
-    ) {
-        LeafButton(
-            modifier = Modifier
-                .fillMaxWidth(.5f),
-            titleResId = R.string.edit_categories_add_category,
-            onClick = onClick
-        )
-    }
 }
 
 @Composable

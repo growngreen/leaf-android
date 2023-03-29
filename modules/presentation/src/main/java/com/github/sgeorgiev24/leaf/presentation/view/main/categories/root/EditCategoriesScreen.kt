@@ -10,9 +10,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
+import com.github.sgeorgiev24.leaf.presentation.R
 import com.github.sgeorgiev24.leaf.presentation.common.BottomSheetRoot
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.ScreenEvent
 import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.mvi.EditCategoriesAction
@@ -42,6 +44,10 @@ fun EditCategoriesScreen() {
         modifier = Modifier.fillMaxHeight(.95f),
         viewModel = viewModel,
         onCloseClick = { viewModel.submitAction(EditCategoriesAction.OnBack) },
+        isLinkVisible = state.isSaveLinkVisible,
+        linkHeader = stringResource(id = R.string.edit_categories_add_category),
+        isLinkEnabled = state.isSaveButtonEnabled,
+        onLinkHeaderCLick = { viewModel.submitAction(EditCategoriesAction.OnAddCategoryClick) },
         content = {
             EditCategoriesContent(
                 state = state,

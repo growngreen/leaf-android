@@ -32,15 +32,16 @@ fun EditCategoryScreen() {
         modifier = Modifier.fillMaxHeight(.95f),
         viewModel = viewModel,
         onCloseClick = { viewModel.submitAction(EditCategoryAction.OnBackClick) },
+        isLinkVisible = true,
+        linkHeader = stringResource(id = R.string.edit_category_save),
+        isLinkEnabled = state.isSaveButtonEnabled,
+        onLinkHeaderCLick = { viewModel.submitAction(EditCategoryAction.OnSaveClick) },
         content = {
             EditCategoryContent(
                 state = state,
                 action = { viewModel.submitAction(it) }
             )
-        },
-        isLinkVisible = true,
-        linkHeader = stringResource(id = R.string.edit_category_save),
-        onLinkHeaderCLick = { viewModel.submitAction(EditCategoryAction.OnSaveClick) }
+        }
     )
 }
 
