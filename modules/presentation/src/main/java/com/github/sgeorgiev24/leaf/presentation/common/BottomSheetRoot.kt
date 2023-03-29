@@ -26,6 +26,7 @@ import com.github.sgeorgiev24.leaf.presentation.common.components.loaders.Circul
 import com.github.sgeorgiev24.leaf.presentation.common.components.text.LeafTextLink
 import com.github.sgeorgiev24.leaf.ui.theme.Colors
 import com.github.sgeorgiev24.leaf.ui.theme.Dimens
+import com.github.sgeorgiev24.leaf.ui.theme.Typographs
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -94,7 +95,8 @@ BottomSheetRoot(
                     LeafTextLink(
                         modifier = Modifier
                             .padding(bottom = Dimens.padding_small, end = Dimens.padding_small),
-                        title = linkHeader
+                        title = linkHeader,
+                        style = Typographs.button1
                     ) {
                         onLinkHeaderCLick()
                     }

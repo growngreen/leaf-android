@@ -7,6 +7,7 @@ import com.github.sgeorgiev24.leaf.interactor.category.CategoryStateEvent
 import com.github.sgeorgiev24.leaf.interactor.category.DeleteCategory
 import com.github.sgeorgiev24.leaf.interactor.category.GetAllCategories
 import com.github.sgeorgiev24.leaf.interactor.category.GetCategoryIcons
+import com.github.sgeorgiev24.leaf.interactor.category.cache.SetCachedCategory
 import com.github.sgeorgiev24.leaf.interactor.validator.StringValidators
 import com.github.sgeorgiev24.leaf.interactor.validator.ValidatorStateEvent
 import com.github.sgeorgiev24.leaf.model.category.add.Category
@@ -29,7 +30,8 @@ constructor(
     private val getCategoryIcons: GetCategoryIcons,
     private val addCategory: AddCategory,
     private val getAllCategories: GetAllCategories,
-    private val deleteCategory: DeleteCategory
+    private val deleteCategory: DeleteCategory,
+    private val setCachedCategory: SetCachedCategory
 ) : BaseViewModel<EditCategoriesState, EditCategoriesAction, ScreenEvent>(
     savedStateHandle, EditCategoriesState()
 ) {
@@ -77,27 +79,43 @@ constructor(
     suspend fun getAllCategories() {
         val event = CategoryStateEvent.GetAllCategories
         if (canExecuteNewStateEvent(event)) {
+            addStateEvent(event)
             getAllCategories(event).run {
                 data?.let {
                     updateState {
                         copy(categories = it)
                     }
                 }
+                response?.handleNewResponse()
+                stateEvent?.let { removeStateEvent(it) }
             }
         }
     }
 
     private suspend fun onEditCategory(category: Category) {
-        navigationDispatcher.navigateTo(CategoryDests.EditCategory)
+        val event = CategoryStateEvent.SetCachedCategory(category)
+        if (canExecuteNewStateEvent(event)) {
+            addStateEvent(event)
+            setCachedCategory(event).run {
+                data?.let {
+                    navigationDispatcher.navigateTo(CategoryDests.EditCategory)
+                }
+                response?.handleNewResponse()
+                stateEvent?.let { removeStateEvent(it) }
+            }
+        }
     }
 
     private suspend fun onDeleteCategory(categoryId: String) {
         val event = CategoryStateEvent.DeleteCategory(categoryId)
         if (canExecuteNewStateEvent(event)) {
+            addStateEvent(event)
             deleteCategory(stateEvent = event).run {
                 data?.let {
                     getAllCategories()
                 }
+                response?.handleNewResponse()
+                stateEvent?.let { removeStateEvent(it) }
             }
         }
     }
@@ -109,10 +127,13 @@ constructor(
             icon = state.value.selectedCategoryIcon
         )
         if (canExecuteNewStateEvent(event)) {
+            addStateEvent(event)
             addCategory(event).run {
                 data?.let {
                     navigationDispatcher.navigateBack()
                 }
+                response?.handleNewResponse()
+                stateEvent?.let { removeStateEvent(it) }
             }
         }
     }
@@ -127,11 +148,14 @@ constructor(
     private suspend fun getCategoryIcons() {
         val event = CategoryStateEvent.GetCategoryIcons
         if (canExecuteNewStateEvent(event)) {
+            addStateEvent(event)
             getCategoryIcons(event).run {
                 data?.let {
                     updateState {
                         copy(categoryIcons = it, selectedCategoryIcon = it.firstOrNull())
                     }
+                    response?.handleNewResponse()
+                    stateEvent?.let { removeStateEvent(it) }
                 }
             }
         }

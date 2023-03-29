@@ -125,7 +125,7 @@ private fun AddCategoryButton(
 }
 
 @Composable
-private fun CategoryIcons(
+fun CategoryIcons(
     icons: List<String>,
     selectedIcon: String? = null,
     onIconClick: (String) -> Unit

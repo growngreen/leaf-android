@@ -81,4 +81,6 @@
 
     <!-- Edit category -->
     <string name="edit_category_title">Edit category</string>
+    <string name="edit_category_category_name">Category name</string>
+    <string name="edit_category_save">Save</string>
 </resources>
