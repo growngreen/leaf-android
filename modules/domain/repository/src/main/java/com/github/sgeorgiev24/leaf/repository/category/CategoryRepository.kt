@@ -17,6 +17,13 @@ interface CategoryRepository {
         category: Category
     ): DataState<Unit>
 
+    suspend fun editCategory(
+        stateEvent: StateEvent,
+        categoryId: String,
+        categoryName: String,
+        categoryIcon: String
+    ): DataState<Unit>
+
     suspend fun deleteCategory(
         stateEvent: StateEvent,
         categoryId: String
@@ -26,4 +33,17 @@ interface CategoryRepository {
         stateEvent: StateEvent,
         userId: String
     ): DataState<List<Category>>
+
+    suspend fun getCachedCategory(
+        stateEvent: StateEvent
+    ): DataState<Category>
+
+    suspend fun setCachedCategory(
+        stateEvent: StateEvent,
+        category: Category
+    ): DataState<Unit>
+
+    suspend fun clearCachedCategory(
+        stateEvent: StateEvent
+    ): DataState<Unit>
 }

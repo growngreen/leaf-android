@@ -1,7 +1,6 @@
 package com.github.sgeorgiev24.leaf
 
 import android.app.Application
-import com.chesire.lifecyklelog.BuildConfig
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import timber.log.Timber.DebugTree

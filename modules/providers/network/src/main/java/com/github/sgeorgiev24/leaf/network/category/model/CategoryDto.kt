@@ -1,5 +1,10 @@
 package com.github.sgeorgiev24.leaf.network.category.model
 
+import com.github.sgeorgiev24.leaf.network.util.FirebaseConstants.CATEGORY_ICON
+import com.github.sgeorgiev24.leaf.network.util.FirebaseConstants.CATEGORY_TITLE
+import com.github.sgeorgiev24.leaf.network.util.FirebaseConstants.CATEGORY_TYPE
+import com.github.sgeorgiev24.leaf.network.util.FirebaseConstants.USER_ID
+
 @kotlinx.serialization.Serializable
 data class CategoryDto(
     val id: String,
@@ -12,8 +17,8 @@ data class CategoryDto(
 }
 
 fun CategoryDto.toFirestoreDocument() = hashMapOf(
-    "userId" to userId,
-    "title" to title,
-    "type" to type.name,
-    "icon" to icon
+    USER_ID to userId,
+    CATEGORY_TITLE to title,
+    CATEGORY_TYPE to type.name,
+    CATEGORY_ICON to icon
 )

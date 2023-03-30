@@ -1,4 +1,4 @@
-package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories
+package com.github.sgeorgiev24.leaf.presentation.view.main.categories
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
@@ -44,8 +44,8 @@ import coil.compose.SubcomposeAsyncImage
 import com.github.sgeorgiev24.leaf.model.category.add.Category
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.HeightSpacer
 import com.github.sgeorgiev24.leaf.presentation.common.components.util.WidthSpacer
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi.EditCategoriesAction
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi.EditCategoriesState
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.mvi.EditCategoriesAction
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.mvi.EditCategoriesState
 import com.github.sgeorgiev24.leaf.ui.theme.Dimens
 import com.github.sgeorgiev24.leaf.ui.theme.GreySuit
 import com.github.sgeorgiev24.leaf.ui.theme.Platinum
@@ -82,6 +82,9 @@ fun CategoriesListContent(
                         category = category,
                         deleteCategory = {
                             action(EditCategoriesAction.OnDeleteCategoryClick(it))
+                        },
+                        editCategory = {
+                            action(EditCategoriesAction.OnEditCategoryClick(it))
                         }
                     )
                 }
@@ -167,7 +170,8 @@ fun CategoryItem(
 fun CategoryActions(
     modifier: Modifier = Modifier,
     category: Category,
-    deleteCategory: (String) -> Unit
+    deleteCategory: (String) -> Unit,
+    editCategory: (Category) -> Unit
 ) {
     Row(
         modifier = modifier
@@ -178,7 +182,9 @@ fun CategoryActions(
         IconButton(
             modifier = Modifier
                 .size(30.dp),
-            onClick = { }
+            onClick = {
+                editCategory(category)
+            }
         ) {
             Icon(
                 modifier = Modifier

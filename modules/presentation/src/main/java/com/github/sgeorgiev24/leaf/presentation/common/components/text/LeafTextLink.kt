@@ -14,6 +14,7 @@ fun LeafTextLink(
     title: String,
     enabled: Boolean = true,
     style: TextStyle? = null,
+    color: Color = Color.Blue,
     onClick: () -> Unit
 ) {
     Text(
@@ -23,6 +24,6 @@ fun LeafTextLink(
         ),
         text = title,
         style = style ?: LocalTextStyle.current,
-        color = Color.Blue
+        color = color
     )
 }

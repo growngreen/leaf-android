@@ -1,6 +1,8 @@
 package com.github.sgeorgiev24.leaf.repository.di
 
 import com.github.sgeorgiev24.leaf.cache.auth.model.LeafUserEntity
+import com.github.sgeorgiev24.leaf.cache.category.model.CategoryEntity
+import com.github.sgeorgiev24.leaf.cache.di.CacheCategoryDataSource
 import com.github.sgeorgiev24.leaf.cache.di.CacheLeafUserDataSource
 import com.github.sgeorgiev24.leaf.cache.util.DefaultCacheDataSource
 import com.github.sgeorgiev24.leaf.network.auth.AuthDataSource
@@ -37,6 +39,12 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideCategoryRepository(
-        categoryDataSource: CategoryDataSource
-    ): CategoryRepository = CategoryRepositoryImpl(categoryDataSource)
+        categoryDataSource: CategoryDataSource,
+        @CacheCategoryDataSource
+        categoryCacheDataSource: DefaultCacheDataSource<CategoryEntity>
+    ): CategoryRepository =
+        CategoryRepositoryImpl(
+            categoryDataSource = categoryDataSource,
+            categoryCacheDataSource = categoryCacheDataSource
+        )
 }

@@ -1,5 +1,6 @@
 package com.github.sgeorgiev24.leaf.interactor.category
 
+import com.github.sgeorgiev24.leaf.model.category.add.Category
 import com.github.sgeorgiev24.leaf.model.category.add.CategoryType
 import com.github.sgeorgiev24.leaf.model.state.StateEvent
 
@@ -18,6 +19,15 @@ sealed class CategoryStateEvent : StateEvent {
         override fun shouldDisplayProgressBar() = true
     }
 
+    data class EditCategory(
+        val categoryId: String,
+        val categoryName: String,
+        val categoryIcon: String
+    ) : CategoryStateEvent() {
+        override fun errorInfo() = "Error while trying to edit category"
+        override fun shouldDisplayProgressBar() = true
+    }
+
     data class DeleteCategory(
         val categoryId: String
     ) : CategoryStateEvent() {
@@ -27,6 +37,23 @@ sealed class CategoryStateEvent : StateEvent {
 
     object GetAllCategories : CategoryStateEvent() {
         override fun errorInfo() = "Error while trying to get all categories"
+        override fun shouldDisplayProgressBar() = true
+    }
+
+    data class SetCachedCategory(
+        val category: Category
+    ) : CategoryStateEvent() {
+        override fun errorInfo() = "Error while trying to set cached category"
+        override fun shouldDisplayProgressBar() = true
+    }
+
+    object GetCachedCategory : CategoryStateEvent() {
+        override fun errorInfo() = "Error while trying to get cached category"
+        override fun shouldDisplayProgressBar() = true
+    }
+
+    object ClearCachedCategory : CategoryStateEvent() {
+        override fun errorInfo() = "Error while trying to clear cached category"
         override fun shouldDisplayProgressBar() = true
     }
 }

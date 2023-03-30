@@ -7,9 +7,4 @@ sealed class MainDests : NavigationAction {
         override val route: String
             get() = "home"
     }
-
-    object EditCategories : MainDests() {
-        override val route: String
-            get() = "editCategories"
-    }
 }

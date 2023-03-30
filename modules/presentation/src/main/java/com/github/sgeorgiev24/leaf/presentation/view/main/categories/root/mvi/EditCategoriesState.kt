@@ -1,10 +1,10 @@
-package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.mvi
+package com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.mvi
 
 import com.github.sgeorgiev24.leaf.model.category.add.Category
 import com.github.sgeorgiev24.leaf.presentation.common.components.textfield.InputWrapper
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.data.CategoryTypeOption
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.data.EditCategoriesTab
-import com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.data.categoryTypeMenuOptions
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.data.CategoryTypeOption
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.data.EditCategoriesTab
+import com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.data.categoryTypeMenuOptions
 
 data class EditCategoriesState(
     val categoryName: InputWrapper = InputWrapper(),
@@ -14,5 +14,10 @@ data class EditCategoriesState(
     val selectedCategoryIcon: String? = null,
     val selectedTab: EditCategoriesTab = EditCategoriesTab.CATEGORIES_LIST,
     val categories: List<Category> = emptyList(),
-    val revealedCategory: Category? = null
-)
+    val revealedCategory: Category? = null,
+    val isSaveLinkVisible: Boolean = false
+) {
+    val isSaveButtonEnabled
+        get() = categoryName.isValid &&
+            selectedCategoryTypeOption != null
+}

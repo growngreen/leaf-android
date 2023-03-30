@@ -1,4 +1,4 @@
-package com.github.sgeorgiev24.leaf.presentation.view.main.editcategories.data
+package com.github.sgeorgiev24.leaf.presentation.view.main.categories.root.data
 
 import androidx.annotation.StringRes
 import com.github.sgeorgiev24.leaf.model.category.add.CategoryType
